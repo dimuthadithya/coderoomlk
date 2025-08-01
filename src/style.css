@@ -68,11 +68,19 @@
     transform: scale(0.8);
     padding: 0.5em;
   }
+
+  .flipdown.flipdown__theme-dark .rotor-group-heading {
+  color: transparent !important;
+}
 }
 @media (max-width: 480px) {
   #flipdown.flipdown {
     transform: scale(0.8);
   }
+
+  .flipdown.flipdown__theme-dark .rotor-group-heading {
+  color: transparent !important;
+}
 }
 .flipdown .rotor {
   background-color: #3b82f6 !important;

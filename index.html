@@ -898,7 +898,7 @@
 
         <script>
           // Fetch and display testimonials
-          fetch('./data/feedbacks.json')
+          fetch('/data/feedbacks.json')
             .then((response) => response.json())
             .then((feedbacks) => {
               // Filter out feedbacks with status "false" and sort by timestamp

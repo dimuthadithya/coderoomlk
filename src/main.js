@@ -1,7 +1,7 @@
 import './style.css';
 
-// Wait for DOM content to be loaded
-document.addEventListener('DOMContentLoaded', () => {
+// Using jQuery's ready function
+$(function () {
   // Get all the elements we need
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById(
@@ -46,16 +46,4 @@ document.addEventListener('DOMContentLoaded', () => {
       enableDarkMode();
     }
   });
-
-  // Initialize FlipDown counter
-  // Set countdown for 4 days, 11 hours, and 5 minutes from now
-  const targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() + 4);
-  targetDate.setHours(targetDate.getHours() + 11);
-  targetDate.setMinutes(targetDate.getMinutes() + 5);
-
-  new FlipDown(targetDate.getTime() / 1000, {
-    theme: 'dark',
-    headings: ['Days', 'Hours', 'Minutes', 'Seconds']
-  }).start();
 });

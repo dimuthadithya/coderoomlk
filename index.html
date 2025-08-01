@@ -10,14 +10,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- FlipDown Counter -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.js"></script>
     <!-- Custom CSS -->
     <link href="src/style.css" rel="stylesheet" />
   </head>
@@ -25,10 +17,10 @@
     <!-- Navbar -->
     <!-- Navbar -->
     <nav
-      class="bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-20 top-0 start-0"
+      class="fixed top-0 z-20 w-full bg-white border-gray-200 dark:bg-gray-900 start-0"
     >
       <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto"
       >
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <span
@@ -38,7 +30,7 @@
         </a>
 
         <!-- Social Icons -->
-        <div class="hidden md:flex items-center space-x-4 md:order-3">
+        <div class="items-center hidden space-x-4 md:flex md:order-3">
           <a
             href="#"
             class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
@@ -111,7 +103,7 @@
           </a>
         </div>
 
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
           <!-- Theme Toggle -->
           <button
             id="theme-toggle"
@@ -143,7 +135,7 @@
           <!-- Register Now Button -->
           <a
             href="/pages/registration.html"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >Register Now</a
           >
         </div>
@@ -154,12 +146,12 @@
           id="navbar-sticky"
         >
           <ul
-            class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-900 dark:border-gray-700"
+            class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-900 dark:border-gray-700"
           >
             <li>
               <a
                 href="/"
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                class="block px-3 py-2 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                 aria-current="page"
                 >Home</a
               >
@@ -167,35 +159,35 @@
             <li>
               <a
                 href="/pages/about.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >About</a
               >
             </li>
             <li>
               <a
                 href="/pages/curriculum.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >Curriculum</a
               >
             </li>
             <li>
               <a
                 href="/pages/feedback.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >Feedback</a
               >
             </li>
             <li>
               <a
                 href="/pages/faq.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >FAQ</a
               >
             </li>
             <li>
               <a
                 href="/pages/contact.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >Contact</a
               >
             </li>
@@ -205,7 +197,7 @@
     </nav>
 
     <!-- Sticky Register Now Button -->
-    <div class="fixed bottom-4 right-4 z-50">
+    <div class="fixed z-50 bottom-4 right-4">
       <a
         href="/pages/registration.html"
         class="flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
@@ -227,119 +219,38 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center bg-white dark:bg-gray-900 overflow-hidden">
-      <!-- Animated Background -->
-      <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-blue-900/30 dark:to-purple-900/30"></div>
-        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-      </div>
-
-      <div class="relative z-10 grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div class="mr-auto place-self-center lg:col-span-7">
-          <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-gray-900 dark:text-white">
-            Master Web Development – From Beginner to Pro in Just 3 Months
-          </h1>
-          <div class="max-w-2xl mb-6 space-y-4">
-            <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400">
-              Interactive project-based course | Limited seats | ₹1500/month
-            </p>
-            <div class="flex flex-col space-y-2">
-              <p class="text-base text-gray-600 dark:text-gray-300">Registration ends in:</p>
-              <div id="flipdown" class="flipdown text-gray-800 dark:text-gray-200"></div>
-            </div>
-          </div>
-          <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-            <a href="/pages/registration.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-              Enroll Now
-              <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-            </a>
-            <a href="/pages/curriculum.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-              View Curriculum
-            </a>
-          </div>
-        </div>
-        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <!-- Tech illustration -->
-          <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/desktop-app.svg" alt="Web Development" class="w-full drop-shadow-2xl animate-float">
-        </div>
-      </div>
-    </section>
-
-    <!-- Registration Form -->
-    <section id="register" class="bg-gray-50 dark:bg-gray-800 py-16">
-      <div class="max-w-screen-xl px-4 mx-auto">
-        <div class="max-w-2xl mx-auto text-center mb-12">
-          <h2 class="text-3xl font-extrabold dark:text-white">
-            Register for the Course
-          </h2>
-          <p class="mt-4 text-gray-500 dark:text-gray-400">
-            Join our upcoming batch and start your journey in web development
-          </p>
-        </div>
-        <form class="max-w-md mx-auto">
-          <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-              <input
-                type="text"
-                name="firstName"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >First name</label
-              >
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-              <input
-                type="text"
-                name="lastName"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >Last name</label
-              >
-            </div>
-          </div>
-          <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="email"
-              name="email"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >Email address</label
-            >
-          </div>
-          <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="tel"
-              name="phone"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >Phone number</label
-            >
-          </div>
-          <button
-            type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    <section
+      class="relative flex items-center justify-center min-h-screen overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+    >
+      <div class="relative z-10 max-w-4xl px-4 py-12 mx-auto text-center">
+        <h1
+          class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white"
+        >
+          Master Web Development – From Beginner to Pro in Just 3 Months
+        </h1>
+        <p
+          class="mb-8 font-light text-gray-700 md:text-lg lg:text-xl dark:text-gray-300"
+        >
+          Interactive project-based course | Limited seats | ₹1500/month
+        </p>
+        <a
+          href="/pages/registration.html"
+          class="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-center text-white transition bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+        >
+          Enroll Now
+          <svg
+            class="w-5 h-5 ml-2 -mr-1"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Submit Registration
-          </button>
-        </form>
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
       </div>
     </section>
 

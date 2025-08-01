@@ -1,5 +1,4 @@
-{
-    "feedbacks": [
+
         {
             "id": 1,
             "name": "Lily Chen",
@@ -24,5 +23,4 @@
             "testimonial": "Coming from zero coding background, this course was perfect for me. The Git and GitHub section was particularly helpful - now I can confidently collaborate with other developers.",
             "position": "Junior Developer"
         }
-    ]
-}
+

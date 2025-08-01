@@ -58,11 +58,22 @@
       }
       .flipdown .rotor-group-heading {
         color: white !important;
+        font-size: 16px !important;
+        margin-top: 10px !important;
+        opacity: 1 !important;
+        text-transform: uppercase !important;
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
       }
       .dark .flipdown .rotor-group-heading,
       .flipdown[data-theme='dark'] .rotor-group-heading,
       .flipdown.flipdown__theme-dark .rotor-group-heading {
         color: white !important;
+        opacity: 1 !important;
+        display: block !important;
+        visibility: visible !important;
       }
       .dark .flipdown .rotor,
       .dark .flipdown .rotor-leaf-front,
@@ -80,12 +91,18 @@
         display: inline-block !important;
         position: relative !important;
         padding: 0px 3px;
+        min-height: 120px !important;
       }
       .flipdown .rotor-group:last-child {
         padding-right: 0 !important;
       }
-      .flipdown .rotor-group-heading:before {
-        display: none !important;
+      .flipdown .rotor-group-heading {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-weight: bold !important;
       }
 
       .flipdown.flipdown__theme-dark
@@ -95,6 +112,13 @@
       .flipdown.flipdown__theme-dark
         .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
         background-color: #fff;
+      }
+
+      .flipdown.flipdown__theme-dark .rotor-group-heading:before {
+        color: #fff;
+        font-weight: lighter;
+        text-align: center;
+        font-size: 12px;
       }
     </style>
   </head>

@@ -1,0 +1,7 @@
+/* Tailwind and Flowbite imports */
+/* The @tailwind directives must be processed by Tailwind CSS via PostCSS or a build tool. 
+   If you want to use plain CSS, replace these with the compiled Tailwind output, 
+   or ensure your build process is set up correctly. 
+   Otherwise, remove these lines to avoid errors in plain CSS. */
+@import "flowbite";
+

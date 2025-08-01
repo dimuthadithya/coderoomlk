@@ -38,17 +38,10 @@
           transform: scale(0.8);
           padding: 0.5em;
         }
-        .flipdown .rotor-group {
-          padding-right: 10px !important;
-        }
       }
       @media (max-width: 480px) {
         #flipdown.flipdown {
           transform: scale(0.8);
-          padding: 0.25em;
-        }
-        .flipdown .rotor-group {
-          padding-right: 5px !important;
         }
       }
       .flipdown .rotor {
@@ -64,17 +57,7 @@
         background-color: #2563eb !important;
       }
       .flipdown .rotor-group-heading {
-        color: #3b82f6 !important;
-        font-size: 0.9rem !important;
-        text-transform: uppercase !important;
-        font-weight: 700 !important;
-        margin-top: -25px !important;
-        margin-bottom: 15px !important;
-        letter-spacing: 1px !important;
-        display: block !important;
-        position: absolute !important;
-        width: 100% !important;
-        text-align: center !important;
+        color: white !important;
       }
       .dark .flipdown .rotor-group-heading,
       .flipdown[data-theme='dark'] .rotor-group-heading,
@@ -96,13 +79,22 @@
         padding-right: 20px !important;
         display: inline-block !important;
         position: relative !important;
-        padding-top: 30px !important;
+        padding: 0px 3px;
       }
       .flipdown .rotor-group:last-child {
         padding-right: 0 !important;
       }
       .flipdown .rotor-group-heading:before {
         display: none !important;
+      }
+
+      .flipdown.flipdown__theme-dark
+        .rotor-group:nth-child(n + 2):nth-child(-n + 3):after,
+      .flipdown.flipdown__theme-dark
+        .rotor-group:nth-child(n + 2):nth-child(-n + 3):before,
+      .flipdown.flipdown__theme-dark
+        .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
+        background-color: #fff;
       }
     </style>
   </head>

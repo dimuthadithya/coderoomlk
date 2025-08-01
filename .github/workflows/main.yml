@@ -6,11 +6,12 @@ on:
       - main
 
 permissions:
-  contents: write  # ✅ this allows pushing to gh-pages
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,8 +27,11 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Create CNAME file
+        run: echo 'www.coderoomlk.online' > dist/CNAME
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # ✅ this only works if permissions are set
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist

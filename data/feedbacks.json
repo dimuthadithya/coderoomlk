@@ -1,26 +1,26 @@
-
-        {
-            "id": 1,
-            "name": "Lily Chen",
-            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lily",
-            "rating": 5,
-            "testimonial": "The project-based learning approach really helped me understand web development concepts deeply. I built a portfolio that helped me land my first freelance client!",
-            "position": "Web Developer"
-        },
-        {
-            "id": 2,
-            "name": "Alex Rodriguez",
-            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-            "rating": 4,
-            "testimonial": "The SCSS and JavaScript modules were eye-opening. I'm now confident in creating responsive, interactive websites. The instructors were always there to help when needed.",
-            "position": "Frontend Developer"
-        },
-        {
-            "id": 3,
-            "name": "Sarah Johnson",
-            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-            "rating": 5,
-            "testimonial": "Coming from zero coding background, this course was perfect for me. The Git and GitHub section was particularly helpful - now I can confidently collaborate with other developers.",
-            "position": "Junior Developer"
-        }
-
+[
+  {
+    "id": 1,
+    "name": "Lily Chen",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lily",
+    "rating": 5,
+    "testimonial": "The project-based learning approach really helped me understand web development concepts deeply. I built a portfolio that helped me land my first freelance client!",
+    "position": "Web Developer"
+  },
+  {
+    "id": 2,
+    "name": "Alex Rodriguez",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+    "rating": 4,
+    "testimonial": "The SCSS and JavaScript modules were eye-opening. I'm now confident in creating responsive, interactive websites. The instructors were always there to help when needed.",
+    "position": "Frontend Developer"
+  },
+  {
+    "id": 3,
+    "name": "Sarah Johnson",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    "rating": 5,
+    "testimonial": "Coming from zero coding background, this course was perfect for me. The Git and GitHub section was particularly helpful - now I can confidently collaborate with other developers.",
+    "position": "Junior Developer"
+  }
+]

@@ -1,7 +1,5 @@
-import './style.css';
-
-// Using jQuery's ready function
-$(function () {
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function () {
   // Get all the elements we need
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById(
@@ -46,4 +44,32 @@ $(function () {
       enableDarkMode();
     }
   });
+
+  // Initialize FlipDown timer
+  try {
+    // Set target date to 4 days from now
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 4);
+    targetDate.setHours(23, 59, 59); // End of the day
+
+    // Convert to Unix timestamp
+    const timestamp = Math.floor(targetDate.getTime() / 1000);
+
+    // Initialize FlipDown
+    const flipdown = new FlipDown(timestamp, {
+      theme: document.documentElement.classList.contains('dark')
+        ? 'dark'
+        : 'light',
+      headings: ['Days', 'Hours', 'Minutes', 'Seconds']
+    });
+
+    // Start the countdown
+    flipdown.start().ifEnded(() => {
+      console.log('The countdown has ended!');
+    });
+
+    console.log('FlipDown initialized successfully');
+  } catch (error) {
+    console.error('Error initializing FlipDown:', error);
+  }
 });

@@ -10,11 +10,69 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- FlipDown -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flipdown@0.3.2/dist/flipdown.min.js"></script>
     <!-- Custom CSS -->
     <link href="src/style.css" rel="stylesheet" />
+    <style>
+      #flipdown.flipdown {
+        padding: 2em;
+        display: inline-flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: center;
+        margin: 0 auto;
+        width: auto !important;
+      }
+      .flipdown .rotor {
+        background-color: #3b82f6 !important;
+      }
+      .flipdown .rotor-leaf-front,
+      .flipdown .rotor-top {
+        color: white !important;
+        background-color: #3b82f6 !important;
+      }
+      .flipdown .rotor-bottom {
+        color: white !important;
+        background-color: #2563eb !important;
+      }
+      .flipdown .rotor-group-heading {
+        color: #3b82f6 !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+      }
+      .dark .flipdown .rotor-group-heading {
+        color: white !important;
+      }
+      .dark .flipdown .rotor,
+      .dark .flipdown .rotor-leaf-front,
+      .dark .flipdown .rotor-top {
+        background-color: #2563eb !important;
+      }
+      .dark .flipdown .rotor-bottom {
+        background-color: #1d4ed8 !important;
+      }
+      .flipdown.flipdown__theme-dark .rotor-group-heading {
+        color: white !important;
+      }
+      .flipdown .rotor-group {
+        padding-right: 20px !important;
+        display: inline-block !important;
+      }
+      .flipdown .rotor-group:last-child {
+        padding-right: 0 !important;
+      }
+      .flipdown .rotor-group-heading:before {
+        display: none !important;
+      }
+    </style>
   </head>
   <body class="bg-white dark:bg-gray-900">
-    <!-- Navbar -->
     <!-- Navbar -->
     <nav
       class="fixed top-0 z-20 w-full bg-white border-gray-200 dark:bg-gray-900 start-0"
@@ -229,10 +287,18 @@
           Master Web Development – From Beginner to Pro in Just 3 Months
         </h1>
         <p
-          class="mb-8 font-light text-gray-700 md:text-lg lg:text-xl dark:text-gray-300"
+          class="mb-4 font-light text-gray-700 md:text-lg lg:text-xl dark:text-gray-300"
         >
           Interactive project-based course | Limited seats | ₹1500/month
         </p>
+        <div class="flex flex-col items-center mb-8">
+          <p
+            class="mb-4 text-lg font-semibold text-gray-800 dark:text-gray-200"
+          >
+            Registration ends in:
+          </p>
+          <div id="flipdown" class="flipdown"></div>
+        </div>
         <a
           href="/pages/registration.html"
           class="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-center text-white transition bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"

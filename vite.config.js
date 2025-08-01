@@ -8,5 +8,7 @@ export default defineConfig({
         main: './index.html'
       }
     }
-  }
+  },
+  // Ensure public directory assets are copied to dist
+  publicDir: 'public'
 });

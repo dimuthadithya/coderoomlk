@@ -1,5 +1,23 @@
-// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function () {
+  // Initialize Typed.js
+  new Typed('#typed-text', {
+    strings: [
+      'Master Modern JavaScript',
+      'Learn Git & Version Control',
+      'Deep Dive into SCSS',
+      'Deploy Your Projects',
+      'Domain & Hosting Setup',
+      'JS ES6 Features',
+      'Projects with GitHub'
+    ],
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 2000,
+    loop: true,
+    smartBackspace: true
+  });
+
+  // Get all the elements we need
   // Get all the elements we need
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById(

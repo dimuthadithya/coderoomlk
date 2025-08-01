@@ -65,10 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize FlipDown timer
   let flipdown;
   try {
-    // Set target date to 4 days from now
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 4);
-    targetDate.setHours(23, 59, 59); // End of the day
+    // Set target date to August 15, 2025 at 11:59:59 PM
+    const targetDate = new Date(2025, 7, 15, 23, 59, 59); // Month is 0-indexed, so 7 = August
 
     // Convert to Unix timestamp
     const timestamp = Math.floor(targetDate.getTime() / 1000);
@@ -85,8 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
     flipdown.start().ifEnded(() => {
       console.log('The countdown has ended!');
     });
-
-    console.log('FlipDown initialized successfully');
   } catch (error) {
     console.error('Error initializing FlipDown:', error);
   }

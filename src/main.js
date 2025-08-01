@@ -1,7 +1,23 @@
-import './style.css';
+document.addEventListener('DOMContentLoaded', function () {
+  // Initialize Typed.js
+  new Typed('#typed-text', {
+    strings: [
+      'Master Modern JavaScript',
+      'Learn Git & Version Control',
+      'Deep Dive into SCSS',
+      'Deploy Your Projects',
+      'Domain & Hosting Setup',
+      'JS ES6 Features',
+      'Projects with GitHub'
+    ],
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 2000,
+    loop: true,
+    smartBackspace: true
+  });
 
-// Wait for DOM content to be loaded
-document.addEventListener('DOMContentLoaded', () => {
+  // Get all the elements we need
   // Get all the elements we need
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById(
@@ -47,15 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Initialize FlipDown counter
-  // Set countdown for 4 days, 11 hours, and 5 minutes from now
-  const targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() + 4);
-  targetDate.setHours(targetDate.getHours() + 11);
-  targetDate.setMinutes(targetDate.getMinutes() + 5);
+  // Initialize FlipDown timer
+  try {
+    // Set target date to 4 days from now
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 4);
+    targetDate.setHours(23, 59, 59); // End of the day
 
-  new FlipDown(targetDate.getTime() / 1000, {
-    theme: 'dark',
-    headings: ['Days', 'Hours', 'Minutes', 'Seconds']
-  }).start();
+    // Convert to Unix timestamp
+    const timestamp = Math.floor(targetDate.getTime() / 1000);
+
+    // Initialize FlipDown
+    const flipdown = new FlipDown(timestamp, {
+      theme: document.documentElement.classList.contains('dark')
+        ? 'dark'
+        : 'light',
+      headings: ['DAYS', 'HOURS', 'MINUTES', 'SECONDS']
+    });
+
+    // Start the countdown
+    flipdown.start().ifEnded(() => {
+      console.log('The countdown has ended!');
+    });
+
+    console.log('FlipDown initialized successfully');
+  } catch (error) {
+    console.error('Error initializing FlipDown:', error);
+  }
 });

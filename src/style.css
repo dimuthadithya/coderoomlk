@@ -63,24 +63,54 @@
   transform-origin: center;
   transform: scale(0.8);
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   #flipdown.flipdown {
     transform: scale(0.8);
     padding: 0.5em;
   }
 
   .flipdown.flipdown__theme-dark .rotor-group-heading {
-  color: transparent !important;
-}
+    color: transparent !important;
+  }
+
+  /* Hide dots/separators between countdown elements */
+  .flipdown .rotor-group:not(:last-child)::after {
+    display: none !important;
+  }
+
+  .flipdown .rotor-group::before {
+    display: none !important;
+  }
+
+  /* Alternative approach - hide all pseudo-elements that create separators */
+  .flipdown .rotor-group:nth-child(n+2):nth-child(-n+3)::after,
+  .flipdown .rotor-group:nth-child(n+2):nth-child(-n+3)::before {
+    display: none !important;
+  }
 }
 @media (max-width: 480px) {
   #flipdown.flipdown {
-    transform: scale(0.8);
+    transform: scale(0.7);
   }
 
   .flipdown.flipdown__theme-dark .rotor-group-heading {
-  color: transparent !important;
-}
+    color: transparent !important;
+  }
+
+  /* Hide dots/separators between countdown elements */
+  .flipdown .rotor-group:not(:last-child)::after {
+    display: none !important;
+  }
+
+  .flipdown .rotor-group::before {
+    display: none !important;
+  }
+
+  /* Alternative approach - hide all pseudo-elements that create separators */
+  .flipdown .rotor-group:nth-child(n+2):nth-child(-n+3)::after,
+  .flipdown .rotor-group:nth-child(n+2):nth-child(-n+3)::before {
+    display: none !important;
+  }
 }
 .flipdown .rotor {
   background-color: #3b82f6 !important;

@@ -533,21 +533,31 @@
         >
           Course Curriculum
         </h2>
+        <div class="mb-8 text-center text-gray-700 dark:text-gray-300">
+          <p class="mb-2">
+            <strong>Duration:</strong> 5 Months | <strong>Schedule:</strong> 2
+            Days/Week
+          </p>
+          <p>
+            <strong>Session Length:</strong> 2 Hours |
+            <strong>Total:</strong> 80 Hours
+          </p>
+        </div>
         <div id="accordion-weeks" data-accordion="collapse">
-          <!-- Week 1-2 -->
+          <!-- Month 1 -->
           <div
             class="mb-4 border border-gray-200 rounded-lg dark:border-gray-700"
           >
-            <h2 id="accordion-weeks-heading-1">
+            <h2 id="accordion-month-1">
               <button
                 type="button"
                 class="flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-500 border-b border-gray-200 rounded-t-lg rtl:text-right focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-weeks-body-1"
+                data-accordion-target="#accordion-month-1-body"
                 aria-expanded="true"
-                aria-controls="accordion-weeks-body-1"
+                aria-controls="accordion-month-1-body"
               >
                 <span class="text-xl text-gray-900 dark:text-white"
-                  >Week 1-2: HTML5 & CSS3 Foundations</span
+                  >Month 1: JavaScript Fundamentals & Advanced Concepts</span
                 >
                 <svg
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -567,36 +577,57 @@
               </button>
             </h2>
             <div
-              id="accordion-weeks-body-1"
+              id="accordion-month-1-body"
               class="hidden"
-              aria-labelledby="accordion-weeks-heading-1"
+              aria-labelledby="accordion-month-1"
             >
               <div class="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  Modern JavaScript Foundations (Week 1-2)
+                </h3>
+                <ul class="mb-4 space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>
+                    • ES6+ Features: Arrow functions, destructuring, template
+                    literals, modules
+                  </li>
+                  <li>• Async JavaScript: Promises, async/await, fetch API</li>
+                  <li>• Array methods: map, filter, reduce, forEach, find</li>
+                  <li>• Project: Interactive Task Manager App</li>
+                </ul>
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  Advanced JavaScript Concepts (Week 3-4)
+                </h3>
                 <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• Modern HTML5 semantic elements and best practices</li>
-                  <li>• CSS3 layouts, Flexbox, and Grid systems</li>
-                  <li>• Responsive design principles and media queries</li>
-                  <li>• CSS animations and transitions</li>
-                  <li>• Web accessibility fundamentals</li>
+                  <li>• Closures, scope, and hoisting</li>
+                  <li>
+                    • Object-oriented programming: Classes, inheritance,
+                    prototypes
+                  </li>
+                  <li>• Functional programming concepts</li>
+                  <li>• Error handling and debugging techniques</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- Week 3-4 -->
+          <!-- Month 2 -->
           <div
             class="mb-4 border border-gray-200 rounded-lg dark:border-gray-700"
           >
-            <h2 id="accordion-weeks-heading-2">
+            <h2 id="accordion-month-2">
               <button
                 type="button"
                 class="flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-500 border-b border-gray-200 rounded-t-lg rtl:text-right focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-weeks-body-2"
+                data-accordion-target="#accordion-month-2-body"
                 aria-expanded="false"
-                aria-controls="accordion-weeks-body-2"
+                aria-controls="accordion-month-2-body"
               >
                 <span class="text-xl text-gray-900 dark:text-white"
-                  >Week 3-4: JavaScript Essentials</span
+                  >Month 2: Advanced JavaScript & SCSS Mastery</span
                 >
                 <svg
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -616,36 +647,51 @@
               </button>
             </h2>
             <div
-              id="accordion-weeks-body-2"
+              id="accordion-month-2-body"
               class="hidden"
-              aria-labelledby="accordion-weeks-heading-2"
+              aria-labelledby="accordion-month-2"
             >
               <div class="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  JavaScript Design Patterns & DOM (Week 1-2)
+                </h3>
+                <ul class="mb-4 space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• Module pattern, revealing module pattern</li>
+                  <li>• Observer pattern, pub/sub</li>
+                  <li>• Advanced DOM manipulation and events</li>
+                  <li>• Project: Weather Dashboard with data persistence</li>
+                </ul>
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  SCSS Deep Dive (Week 3-4)
+                </h3>
                 <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• ES6+ features and modern JavaScript syntax</li>
-                  <li>• DOM manipulation and event handling</li>
-                  <li>• Asynchronous programming with Promises</li>
-                  <li>• APIs and fetch requests</li>
-                  <li>• Error handling and debugging</li>
+                  <li>• SCSS syntax, variables, nesting, mixins</li>
+                  <li>• Functions, conditionals, loops in SCSS</li>
+                  <li>• Partials, imports, and file organization</li>
+                  <li>• CSS Grid and Flexbox with SCSS</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- Week 5-6 -->
+          <!-- Month 3 -->
           <div
             class="mb-4 border border-gray-200 rounded-lg dark:border-gray-700"
           >
-            <h2 id="accordion-weeks-heading-3">
+            <h2 id="accordion-month-3">
               <button
                 type="button"
                 class="flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-500 border-b border-gray-200 rounded-t-lg rtl:text-right focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-weeks-body-3"
+                data-accordion-target="#accordion-month-3-body"
                 aria-expanded="false"
-                aria-controls="accordion-weeks-body-3"
+                aria-controls="accordion-month-3-body"
               >
                 <span class="text-xl text-gray-900 dark:text-white"
-                  >Week 5-6: Git & GitHub + Project</span
+                  >Month 3: Version Control & Collaboration</span
                 >
                 <svg
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -665,36 +711,55 @@
               </button>
             </h2>
             <div
-              id="accordion-weeks-body-3"
+              id="accordion-month-3-body"
               class="hidden"
-              aria-labelledby="accordion-weeks-heading-3"
+              aria-labelledby="accordion-month-3"
             >
               <div class="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  Git Fundamentals & Advanced Features (Week 1-2)
+                </h3>
+                <ul class="mb-4 space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• Git basics: init, add, commit, push, pull</li>
+                  <li>• Branching strategies: feature branches, Git Flow</li>
+                  <li>• Merging, rebasing, and conflict resolution</li>
+                  <li>
+                    • Project: E-commerce Product Catalog (team collaboration)
+                  </li>
+                </ul>
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  GitHub & Development Workflows (Week 3-4)
+                </h3>
                 <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• Version control fundamentals with Git</li>
-                  <li>• Collaborative development using GitHub</li>
-                  <li>• Branching strategies and workflows</li>
-                  <li>• Pull requests and code reviews</li>
-                  <li>• Mini-project implementation</li>
+                  <li>
+                    • GitHub features: Issues, pull requests, code reviews
+                  </li>
+                  <li>• GitHub Actions for CI/CD basics</li>
+                  <li>• Documentation with README, wikis</li>
+                  <li>• Open source contribution workflow</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- Week 7-8 -->
+          <!-- Month 4 -->
           <div
             class="mb-4 border border-gray-200 rounded-lg dark:border-gray-700"
           >
-            <h2 id="accordion-weeks-heading-4">
+            <h2 id="accordion-month-4">
               <button
                 type="button"
                 class="flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-500 border-b border-gray-200 rounded-t-lg rtl:text-right focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-weeks-body-4"
+                data-accordion-target="#accordion-month-4-body"
                 aria-expanded="false"
-                aria-controls="accordion-weeks-body-4"
+                aria-controls="accordion-month-4-body"
               >
                 <span class="text-xl text-gray-900 dark:text-white"
-                  >Week 7-8: SCSS & Web Hosting</span
+                  >Month 4: APIs & Data Management</span
                 >
                 <svg
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -714,36 +779,51 @@
               </button>
             </h2>
             <div
-              id="accordion-weeks-body-4"
+              id="accordion-month-4-body"
               class="hidden"
-              aria-labelledby="accordion-weeks-heading-4"
+              aria-labelledby="accordion-month-4"
             >
               <div class="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  RESTful APIs & HTTP (Week 1-2)
+                </h3>
+                <ul class="mb-4 space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• REST principles and HTTP methods</li>
+                  <li>• Fetch API and axios for API calls</li>
+                  <li>• Authentication: API keys, tokens, OAuth basics</li>
+                  <li>• Project: News Aggregator with multiple APIs</li>
+                </ul>
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  Advanced API Patterns & Data Processing (Week 3-4)
+                </h3>
                 <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• SCSS syntax and features</li>
-                  <li>• Variables, mixins, and functions</li>
-                  <li>• Domain registration and DNS</li>
-                  <li>• Web hosting setup and deployment</li>
-                  <li>• Performance optimization techniques</li>
+                  <li>• GraphQL basics and implementation</li>
+                  <li>• WebSockets for real-time data</li>
+                  <li>• Data caching and optimization</li>
+                  <li>• JSON manipulation and validation</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- Week 9-10 -->
+          <!-- Month 5 -->
           <div
             class="mb-4 border border-gray-200 rounded-lg dark:border-gray-700"
           >
-            <h2 id="accordion-weeks-heading-5">
+            <h2 id="accordion-month-5">
               <button
                 type="button"
                 class="flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-500 border-b border-gray-200 rounded-t-lg rtl:text-right focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-weeks-body-5"
+                data-accordion-target="#accordion-month-5-body"
                 aria-expanded="false"
-                aria-controls="accordion-weeks-body-5"
+                aria-controls="accordion-month-5-body"
               >
                 <span class="text-xl text-gray-900 dark:text-white"
-                  >Week 9-10: Final Project</span
+                  >Month 5: Deployment & Professional Development</span
                 >
                 <svg
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -763,17 +843,32 @@
               </button>
             </h2>
             <div
-              id="accordion-weeks-body-5"
+              id="accordion-month-5-body"
               class="hidden"
-              aria-labelledby="accordion-weeks-heading-5"
+              aria-labelledby="accordion-month-5"
             >
               <div class="p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  Hosting & Domain Management (Week 1-2)
+                </h3>
+                <ul class="mb-4 space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• Domain registration and DNS configuration</li>
+                  <li>• Static hosting: Netlify, Vercel, GitHub Pages</li>
+                  <li>• Server hosting: shared hosting, VPS basics</li>
+                  <li>• Project: Portfolio Website deployment</li>
+                </ul>
+                <h3
+                  class="mb-3 text-lg font-semibold text-gray-900 dark:text-white"
+                >
+                  Production Optimization & Career Preparation (Week 3-4)
+                </h3>
                 <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• Project planning and architecture</li>
-                  <li>• Implementation of learned concepts</li>
-                  <li>• Code quality and best practices</li>
-                  <li>• Testing and debugging</li>
-                  <li>• Deployment and presentation</li>
+                  <li>• Performance optimization: minification, compression</li>
+                  <li>• SEO basics and meta tags</li>
+                  <li>• Analytics integration</li>
+                  <li>• Portfolio development and final project deployment</li>
                 </ul>
               </div>
             </div>

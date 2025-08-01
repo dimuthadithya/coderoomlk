@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Get all the elements we need
-  // Get all the elements we need
   const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
   const themeToggleLightIcon = document.getElementById(
     'theme-toggle-light-icon'
@@ -64,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Initialize FlipDown timer
+  let flipdown;
   try {
     // Set target date to 4 days from now
     const targetDate = new Date();
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const timestamp = Math.floor(targetDate.getTime() / 1000);
 
     // Initialize FlipDown
-    const flipdown = new FlipDown(timestamp, {
+    flipdown = new FlipDown(timestamp, {
       theme: document.documentElement.classList.contains('dark')
         ? 'dark'
         : 'light',
@@ -90,4 +90,38 @@ document.addEventListener('DOMContentLoaded', function () {
   } catch (error) {
     console.error('Error initializing FlipDown:', error);
   }
+
+  // Update date and time
+  function updateDateTime() {
+    const now = new Date();
+
+    // Format time
+    const timeOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+    const timeString = now.toLocaleTimeString('en-US', timeOptions);
+
+    // Format date
+    const dateOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    const dateString = now.toLocaleDateString('en-US', dateOptions);
+
+    // Update elements
+    const timeElement = document.getElementById('current-time');
+    const dateElement = document.getElementById('current-date');
+
+    if (timeElement) timeElement.textContent = timeString;
+    if (dateElement) dateElement.textContent = dateString;
+  }
+
+  // Update immediately and then every second
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
 });

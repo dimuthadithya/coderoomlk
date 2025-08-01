@@ -1,4 +1,9 @@
-/* Tailwind and Flowbite imports */
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Flowbite import */
 @import 'flowbite';
 
 /* Hero Section Animations */

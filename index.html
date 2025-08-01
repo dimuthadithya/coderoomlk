@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>coderoomlk - Web Development Course</title>
-    <!-- Tailwind CSS and Flowbite -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
@@ -112,7 +111,7 @@
           <button
             id="theme-toggle"
             type="button"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 hidden dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mx-2"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mx-2"
           >
             <svg
               id="theme-toggle-dark-icon"
@@ -1504,36 +1503,5 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <script type="module" src="./src/main.js"></script>
-
-    <!-- Date Time Script -->
-    <script>
-      function updateDateTime() {
-        const now = new Date();
-
-        // Update time
-        const timeOptions = {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: true
-        };
-        document.getElementById('current-time').textContent =
-          now.toLocaleTimeString('en-US', timeOptions);
-
-        // Update date
-        const dateOptions = {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        };
-        document.getElementById('current-date').textContent =
-          now.toLocaleDateString('en-US', dateOptions);
-      }
-
-      // Update immediately and then every second
-      updateDateTime();
-      setInterval(updateDateTime, 1000);
-    </script>
   </body>
 </html>

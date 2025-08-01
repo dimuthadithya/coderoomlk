@@ -1,1 +1,32 @@
-data [object Object],[object Object],[object Object],[object Object],[object Object]
+[
+  {
+    "Timestamp": "8/1/2025 14:35:47",
+    "Feedback": "Great service! The response time was excellent and the quality exceeded my expectations. Would definitely recommend to others.",
+    "Name": "John Smith",
+    "Email": "john.smith@example.com"
+  },
+  {
+    "Timestamp": "8/1/2025 12:18:22",
+    "Feedback": "The product quality is good but delivery was delayed by 3 days. Please improve logistics.",
+    "Name": "Sarah Johnson",
+    "Email": "sarah.j@outlook.com"
+  },
+  {
+    "Timestamp": "8/1/2025 09:45:13",
+    "Feedback": "Amazing customer support! They resolved my issue within minutes. Very professional team.",
+    "Name": "Mike Davis",
+    "Email": "mike.davis87@yahoo.com"
+  },
+  {
+    "Timestamp": "8/1/2025 16:22:58",
+    "Feedback": "The website interface could be more user-friendly. Navigation is a bit confusing for new users.",
+    "Name": "Emily Chen",
+    "Email": "emily.chen@gmail.com"
+  },
+  {
+    "Timestamp": "8/1/2025 11:07:41",
+    "Feedback": "Excellent value for money. The features offered are comprehensive and well-designed.",
+    "Name": "Robert Martinez",
+    "Email": "r.martinez@hotmail.com"
+  }
+]

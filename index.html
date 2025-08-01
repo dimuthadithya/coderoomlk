@@ -22,105 +22,6 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- Custom CSS -->
     <link href="src/style.css" rel="stylesheet" />
-    <style>
-      #flipdown.flipdown {
-        padding: 1em;
-        display: inline-flex !important;
-        flex-wrap: nowrap !important;
-        justify-content: center;
-        margin: 0 auto;
-        width: auto !important;
-        transform-origin: center;
-        transform: scale(0.8);
-      }
-      @media (max-width: 768px) {
-        #flipdown.flipdown {
-          transform: scale(0.8);
-          padding: 0.5em;
-        }
-      }
-      @media (max-width: 480px) {
-        #flipdown.flipdown {
-          transform: scale(0.8);
-        }
-      }
-      .flipdown .rotor {
-        background-color: #3b82f6 !important;
-      }
-      .flipdown .rotor-leaf-front,
-      .flipdown .rotor-top {
-        color: white !important;
-        background-color: #3b82f6 !important;
-      }
-      .flipdown .rotor-bottom {
-        color: white !important;
-        background-color: #2563eb !important;
-      }
-      .flipdown .rotor-group-heading {
-        color: white !important;
-        font-size: 16px !important;
-        margin-top: 10px !important;
-        opacity: 1 !important;
-        text-transform: uppercase !important;
-        display: block !important;
-        visibility: visible !important;
-        position: relative !important;
-        z-index: 1 !important;
-      }
-      .dark .flipdown .rotor-group-heading,
-      .flipdown[data-theme='dark'] .rotor-group-heading,
-      .flipdown.flipdown__theme-dark .rotor-group-heading {
-        color: white !important;
-        opacity: 1 !important;
-        display: block !important;
-        visibility: visible !important;
-      }
-      .dark .flipdown .rotor,
-      .dark .flipdown .rotor-leaf-front,
-      .dark .flipdown .rotor-top {
-        background-color: #2563eb !important;
-      }
-      .dark .flipdown .rotor-bottom {
-        background-color: #1d4ed8 !important;
-      }
-      .flipdown.flipdown__theme-dark .rotor-group-heading {
-        color: white !important;
-      }
-      .flipdown .rotor-group {
-        padding-right: 20px !important;
-        display: inline-block !important;
-        position: relative !important;
-        padding: 0px 3px;
-        min-height: 120px !important;
-      }
-      .flipdown .rotor-group:last-child {
-        padding-right: 0 !important;
-      }
-      .flipdown .rotor-group-heading {
-        display: block !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        text-align: center !important;
-        font-weight: bold !important;
-      }
-
-      .flipdown.flipdown__theme-dark
-        .rotor-group:nth-child(n + 2):nth-child(-n + 3):after,
-      .flipdown.flipdown__theme-dark
-        .rotor-group:nth-child(n + 2):nth-child(-n + 3):before,
-      .flipdown.flipdown__theme-dark
-        .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
-        background-color: #fff;
-      }
-
-      .flipdown.flipdown__theme-dark .rotor-group-heading:before {
-        color: #fff;
-        font-weight: lighter;
-        text-align: center;
-        font-size: 12px;
-      }
-    </style>
   </head>
   <body class="bg-white dark:bg-gray-900">
     <!-- Navbar -->
@@ -304,24 +205,18 @@
       </div>
     </nav>
 
-    <!-- Sticky Register Now Button -->
+    <!-- Sticky WhatsApp Button -->
     <div class="fixed z-50 bottom-4 right-4">
       <a
-        href="/pages/registration.html"
-        class="flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+        href="https://wa.me/94123456789"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center text-white transition-all duration-300 bg-green-500 rounded-full shadow-lg w-14 h-14 hover:bg-green-600 hover:scale-110 animate-bounce hover:animate-none focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900 hover:shadow-2xl"
       >
-        Register Now
-        <svg
-          class="w-4 h-4 ml-2"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path
-            fill-rule="evenodd"
-            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
+            d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.237a10.065 10.065 0 004.779 1.217h.004c5.505 0 9.988-4.478 9.988-9.984 0-2.666-1.037-5.172-2.922-7.057A9.944 9.944 0 0012.012 2zm0 18.355h-.003a8.332 8.332 0 01-4.249-1.163l-.305-.181-3.16.828.842-3.081-.199-.316a8.29 8.29 0 01-1.273-4.458c.001-4.579 3.73-8.305 8.307-8.305 2.218 0 4.303.864 5.869 2.431a8.247 8.247 0 012.431 5.873c0 4.579-3.729 8.305-8.307 8.305z"
+          />
         </svg>
       </a>
     </div>
@@ -961,17 +856,13 @@
           Fill the form to reserve your seat. We'll contact you within 24 hours.
         </p>
         <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
-          <div class="aspect-video">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLScd6Wb6e2hTQ9PTjwz1OAwRuCSJH-TDE-ono6W0h8yzCA_E6g/viewform?embedded=true"
-              width="100%"
-              height="1304"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              >Loading...</iframe
-            >
-          </div>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScd6Wb6e2hTQ9PTjwz1OAwRuCSJH-TDE-ono6W0h8yzCA_E6g/viewform?embedded=true"
+            width="100%"
+            height="1600"
+            style="border: none"
+            >Loading...</iframe
+          >
         </div>
         <p class="mt-6 text-sm text-gray-500 dark:text-gray-400">
           By submitting this form, you agree to our terms and conditions. Your

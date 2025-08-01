@@ -806,6 +806,10 @@
           fetch('./data/feedbacks.json')
             .then((response) => response.json())
             .then((feedbacks) => {
+              // Sort feedbacks by timestamp in descending order (newest first)
+              feedbacks.sort(
+                (a, b) => new Date(b.Timestamp) - new Date(a.Timestamp)
+              );
               console.log(feedbacks);
               const container = document.getElementById(
                 'testimonials-container'

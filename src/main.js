@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
       theme: document.documentElement.classList.contains('dark')
         ? 'dark'
         : 'light',
-      headings: ['Days', 'Hours', 'Minutes', 'Seconds']
+      headings: ['DAYS', 'HOURS', 'MINUTES', 'SECONDS']
     });
 
     // Start the countdown

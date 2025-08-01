@@ -1,9 +1,10 @@
 /* Tailwind and Flowbite imports */
-@import "flowbite";
+@import 'flowbite';
 
 /* Hero Section Animations */
 @keyframes blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   25% {
@@ -18,7 +19,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
   50% {
@@ -46,100 +48,117 @@
   animation-delay: 6s;
 }
 
-      #flipdown.flipdown {
-        padding: 1em;
-        display: inline-flex !important;
-        flex-wrap: nowrap !important;
-        justify-content: center;
-        margin: 0 auto;
-        width: auto !important;
-        transform-origin: center;
-        transform: scale(0.8);
-      }
-      @media (max-width: 768px) {
-        #flipdown.flipdown {
-          transform: scale(0.8);
-          padding: 0.5em;
-        }
-      }
-      @media (max-width: 480px) {
-        #flipdown.flipdown {
-          transform: scale(0.8);
-        }
-      }
-      .flipdown .rotor {
-        background-color: #3b82f6 !important;
-      }
-      .flipdown .rotor-leaf-front,
-      .flipdown .rotor-top {
-        color: white !important;
-        background-color: #3b82f6 !important;
-      }
-      .flipdown .rotor-bottom {
-        color: white !important;
-        background-color: #2563eb !important;
-      }
-      .flipdown .rotor-group-heading {
-        color: white !important;
-        font-size: 16px !important;
-        margin-top: 10px !important;
-        opacity: 1 !important;
-        text-transform: uppercase !important;
-        display: block !important;
-        visibility: visible !important;
-        position: relative !important;
-        z-index: 1 !important;
-      }
-      .dark .flipdown .rotor-group-heading,
-      .flipdown[data-theme='dark'] .rotor-group-heading,
-      .flipdown.flipdown__theme-dark .rotor-group-heading {
-        color: white !important;
-        opacity: 1 !important;
-        display: block !important;
-        visibility: visible !important;
-      }
-      .dark .flipdown .rotor,
-      .dark .flipdown .rotor-leaf-front,
-      .dark .flipdown .rotor-top {
-        background-color: #2563eb !important;
-      }
-      .dark .flipdown .rotor-bottom {
-        background-color: #1d4ed8 !important;
-      }
-      .flipdown.flipdown__theme-dark .rotor-group-heading {
-        color: white !important;
-      }
-      .flipdown .rotor-group {
-        padding-right: 20px !important;
-        display: inline-block !important;
-        position: relative !important;
-        padding: 0px 3px;
-        min-height: 120px !important;
-      }
-      .flipdown .rotor-group:last-child {
-        padding-right: 0 !important;
-      }
-      .flipdown .rotor-group-heading {
-        display: block !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        text-align: center !important;
-        font-weight: bold !important;
-      }
+#flipdown.flipdown {
+  padding: 1em;
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: center;
+  margin: 0 auto;
+  width: auto !important;
+  transform-origin: center;
+  transform: scale(0.8);
+}
+@media (max-width: 768px) {
+  #flipdown.flipdown {
+    transform: scale(0.8);
+    padding: 0.5em;
+  }
+}
+@media (max-width: 480px) {
+  #flipdown.flipdown {
+    transform: scale(0.8);
+  }
+}
+.flipdown .rotor {
+  background-color: #3b82f6 !important;
+}
+.flipdown .rotor-leaf-front,
+.flipdown .rotor-top {
+  color: white !important;
+  background-color: #3b82f6 !important;
+}
+.flipdown .rotor-bottom {
+  color: white !important;
+  background-color: #2563eb !important;
+}
+.flipdown .rotor-group-heading {
+  color: white !important;
+  font-size: 16px !important;
+  margin-top: 10px !important;
+  opacity: 1 !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+.dark .flipdown .rotor-group-heading,
+.flipdown[data-theme='dark'] .rotor-group-heading,
+.flipdown.flipdown__theme-dark .rotor-group-heading {
+  color: white !important;
+  opacity: 1 !important;
+  display: block !important;
+  visibility: visible !important;
+}
+.dark .flipdown .rotor,
+.dark .flipdown .rotor-leaf-front,
+.dark .flipdown .rotor-top {
+  background-color: #2563eb !important;
+}
+.dark .flipdown .rotor-bottom {
+  background-color: #1d4ed8 !important;
+}
+.flipdown.flipdown__theme-dark .rotor-group-heading {
+  color: white !important;
+}
+.flipdown .rotor-group {
+  padding-right: 20px !important;
+  display: inline-block !important;
+  position: relative !important;
+  padding: 0px 3px;
+  min-height: 120px !important;
+}
+.flipdown .rotor-group:last-child {
+  padding-right: 0 !important;
+}
+.flipdown .rotor-group-heading {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  text-align: center !important;
+  font-weight: bold !important;
+}
 
-      .flipdown.flipdown__theme-dark
-        .rotor-group:nth-child(n + 2):nth-child(-n + 3):after,
-      .flipdown.flipdown__theme-dark
-        .rotor-group:nth-child(n + 2):nth-child(-n + 3):before,
-      .flipdown.flipdown__theme-dark
-        .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
-        background-color: #fff;
-      }
+.flipdown.flipdown__theme-dark
+  .rotor-group:nth-child(n + 2):nth-child(-n + 3):after,
+.flipdown.flipdown__theme-dark
+  .rotor-group:nth-child(n + 2):nth-child(-n + 3):before,
+.flipdown.flipdown__theme-dark
+  .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
+  background-color: #fff;
+}
 
-      .flipdown.flipdown__theme-dark .rotor-group-heading:before {
-        color: #fff;
-        font-weight: lighter;
-        text-align: center;
-        font-size: 12px;
-      }
+.flipdown.flipdown__theme-dark .rotor-group-heading:before {
+  color: #fff;
+  font-weight: lighter;
+  text-align: center;
+  font-size: 12px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll-x:hover {
+  animation-play-state: paused;
+}

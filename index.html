@@ -806,11 +806,14 @@
           fetch('./data/feedbacks.json')
             .then((response) => response.json())
             .then((feedbacks) => {
-              // Sort feedbacks by timestamp in descending order (newest first)
-              feedbacks.sort(
+              // Filter out feedbacks with status "false" and sort by timestamp
+              const approvedFeedbacks = feedbacks.filter(
+                (feedback) => feedback.status !== 'false'
+              );
+              approvedFeedbacks.sort(
                 (a, b) => new Date(b.Timestamp) - new Date(a.Timestamp)
               );
-              console.log(feedbacks);
+              console.log(approvedFeedbacks);
               const container = document.getElementById(
                 'testimonials-container'
               );
@@ -858,8 +861,8 @@
                 )
                 .join('');
 
-              // Add the feedbacks twice to create seamless loop
-              container.innerHTML = feedbacksHTML + feedbacksHTML;
+              // Display the feedbacks once
+              container.innerHTML = feedbacksHTML;
             })
             .catch((error) => console.error('Error loading feedbacks:', error));
         </script>

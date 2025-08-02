@@ -1091,6 +1091,9 @@
 
         <!-- Manual Testimonials Slider Container -->
         <div class="relative overflow-hidden">
+          <!-- Progress Bar -->
+          <div class="slide-progress-bar"></div>
+
           <!-- Navigation Buttons -->
           <div class="flex justify-center mb-6 space-x-4">
             <button
@@ -1126,6 +1129,23 @@
         <style>
           .testimonial-card {
             box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          .testimonial-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+          }
+
+          .slide-progress-bar {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            border-radius: 1px;
+            transition: width 5s linear;
           }
 
           @media (max-width: 767px) {
@@ -1145,33 +1165,53 @@
               width: calc((100% - 48px) / 3) !important;
             }
           }
+
+          /* Navigation button animations */
+          #prev-btn,
+          #next-btn {
+            transition: transform 0.2s ease, opacity 0.2s ease,
+              background-color 0.2s ease;
+          }
+
+          #prev-btn:hover:not(:disabled),
+          #next-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+          }
+
+          #prev-btn:active:not(:disabled),
+          #next-btn:active:not(:disabled) {
+            transform: scale(0.95);
+          }
+
+          /* Smooth slide transitions */
+          #testimonials-container {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          /* Pagination dot animations */
+          #pagination-dots button {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+          }
+
+          #pagination-dots button:hover {
+            transform: scale(1.2);
+          }
         </style>
 
         <script>
-          // Function to fetch GitHub profile picture
-          async function getGitHubProfilePic(username) {
-            try {
-              const response = await fetch(
-                `https://api.github.com/users/${username}`
-              );
-              if (response.ok) {
-                const userData = await response.json();
-                return userData.avatar_url;
-              }
-            } catch (error) {
-              console.log(
-                `Could not fetch profile pic for ${username}:`,
-                error
-              );
-            }
-            // Fallback to DiceBear avatar
-            return `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`;
+          // Function to get GitHub profile picture directly
+          function getGitHubProfilePic(username) {
+            // Use direct GitHub avatar URL format
+            return `https://github.com/${username}.png`;
           }
 
           // Testimonials slider functionality
           let currentIndex = 0;
           let totalFeedbacks = 0;
           let testimonialsPerView = 1; // Default for mobile
+          let autoSlideInterval = null;
+          const AUTO_SLIDE_DELAY = 5000; // 5 seconds between slides
+          let isUserInteracting = false;
 
           function updateTestimonialsPerView() {
             const screenWidth = window.innerWidth;
@@ -1181,6 +1221,49 @@
               testimonialsPerView = 2; // Medium screens
             } else {
               testimonialsPerView = 1; // Small screens
+            }
+          }
+
+          function startAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+              if (!isUserInteracting) {
+                const maxSlides = Math.max(
+                  1,
+                  totalFeedbacks - testimonialsPerView + 1
+                );
+                if (currentIndex >= maxSlides - 1) {
+                  // Reset to first slide with animation
+                  currentIndex = 0;
+                } else {
+                  currentIndex++;
+                }
+                updateSliderPosition();
+                updateProgressBar(true); // Reset and start progress
+              }
+            }, AUTO_SLIDE_DELAY);
+          }
+
+          function stopAutoSlide() {
+            if (autoSlideInterval) {
+              clearInterval(autoSlideInterval);
+              autoSlideInterval = null;
+            }
+            updateProgressBar(false); // Stop progress
+          }
+
+          function updateProgressBar(start = true) {
+            const progressBar = document.querySelector('.slide-progress-bar');
+            if (!progressBar) return;
+
+            progressBar.style.transition = 'none';
+            progressBar.style.width = start ? '0%' : '100%';
+
+            if (start) {
+              setTimeout(() => {
+                progressBar.style.transition = `width ${AUTO_SLIDE_DELAY}ms linear`;
+                progressBar.style.width = '100%';
+              }, 50);
             }
           }
 
@@ -1209,12 +1292,23 @@
             // Calculate translateX based on how many cards to skip
             const translateX = currentIndex * (cardWidth + gap);
 
+            // Add smooth animation
+            container.style.transition =
+              'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
             container.style.transform = `translateX(-${translateX}px)`;
 
-            // Update navigation buttons
-            document.getElementById('prev-btn').disabled = currentIndex === 0;
-            document.getElementById('next-btn').disabled =
-              currentIndex >= maxSlides - 1;
+            // Update navigation buttons with animated states
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxSlides - 1;
+
+            // Add active state animation
+            prevBtn.classList.toggle('opacity-50', currentIndex === 0);
+            nextBtn.classList.toggle(
+              'opacity-50',
+              currentIndex >= maxSlides - 1
+            );
 
             // Update pagination dots
             updatePaginationDots();
@@ -1252,14 +1346,34 @@
             );
             if (currentIndex < maxSlides - 1) {
               currentIndex++;
-              updateSliderPosition();
+            } else {
+              currentIndex = 0; // Loop back to first slide
+            }
+            updateSliderPosition();
+
+            // Reset auto-slide timer
+            if (!isUserInteracting) {
+              stopAutoSlide();
+              startAutoSlide();
             }
           }
 
           function prevTestimonial() {
+            const maxSlides = Math.max(
+              1,
+              totalFeedbacks - testimonialsPerView + 1
+            );
             if (currentIndex > 0) {
               currentIndex--;
-              updateSliderPosition();
+            } else {
+              currentIndex = maxSlides - 1; // Loop to last slide
+            }
+            updateSliderPosition();
+
+            // Reset auto-slide timer
+            if (!isUserInteracting) {
+              stopAutoSlide();
+              startAutoSlide();
             }
           }
 
@@ -1283,17 +1397,15 @@
                 'testimonials-container'
               );
 
-              // Fetch GitHub profile pictures for each feedback
-              const feedbacksWithPics = await Promise.all(
-                approvedFeedbacks.map(async (feedback) => {
-                  if (feedback['Github username']) {
-                    feedback.githubAvatar = await getGitHubProfilePic(
-                      feedback['Github username']
-                    );
-                  }
-                  return feedback;
-                })
-              );
+              // Get GitHub profile pictures for each feedback
+              const feedbacksWithPics = approvedFeedbacks.map((feedback) => {
+                if (feedback['Github username']) {
+                  feedback.githubAvatar = getGitHubProfilePic(
+                    feedback['Github username']
+                  );
+                }
+                return feedback;
+              });
 
               // Create HTML for each feedback with responsive widths
               const feedbacksHTML = feedbacksWithPics
@@ -1348,21 +1460,62 @@
                 updateSliderPosition();
 
                 // Add event listeners for navigation buttons
-                document
-                  .getElementById('prev-btn')
-                  .addEventListener('click', prevTestimonial);
-                document
-                  .getElementById('next-btn')
-                  .addEventListener('click', nextTestimonial);
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                const sliderContainer = document.querySelector(
+                  '#testimonials .relative'
+                );
+
+                prevBtn.addEventListener('click', () => {
+                  isUserInteracting = true;
+                  prevTestimonial();
+                  stopAutoSlide();
+                  setTimeout(() => {
+                    isUserInteracting = false;
+                    startAutoSlide();
+                  }, 2000);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                  isUserInteracting = true;
+                  nextTestimonial();
+                  stopAutoSlide();
+                  setTimeout(() => {
+                    isUserInteracting = false;
+                    startAutoSlide();
+                  }, 2000);
+                });
+
+                // Pause on hover
+                sliderContainer.addEventListener('mouseenter', () => {
+                  isUserInteracting = true;
+                  stopAutoSlide();
+                });
+
+                sliderContainer.addEventListener('mouseleave', () => {
+                  isUserInteracting = false;
+                  startAutoSlide();
+                });
 
                 // Add keyboard navigation
                 document.addEventListener('keydown', (e) => {
-                  if (e.key === 'ArrowLeft') {
-                    prevTestimonial();
-                  } else if (e.key === 'ArrowRight') {
-                    nextTestimonial();
+                  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    isUserInteracting = true;
+                    stopAutoSlide();
+                    if (e.key === 'ArrowLeft') {
+                      prevTestimonial();
+                    } else {
+                      nextTestimonial();
+                    }
+                    setTimeout(() => {
+                      isUserInteracting = false;
+                      startAutoSlide();
+                    }, 2000);
                   }
                 });
+
+                // Start auto-slide
+                startAutoSlide();
 
                 // Handle window resize
                 window.addEventListener('resize', () => {

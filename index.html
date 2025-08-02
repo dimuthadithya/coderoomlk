@@ -1380,17 +1380,11 @@
           // Fetch and display testimonials
           fetch('/data/feedbacks.json')
             .then((response) => response.json())
-            .then(async (data) => {
-              // Access the feedbacks array from the JSON data
-              const feedbacks = data.feedbacks || [];
-
-              // Filter out feedbacks with status "false" and sort by timestamp
-              const approvedFeedbacks = feedbacks.filter(
-                (feedback) => feedback.status !== 'false'
-              );
-              approvedFeedbacks.sort(
-                (a, b) => new Date(b.Timestamp) - new Date(a.Timestamp)
-              );
+            .then((feedbacks) => {
+              // Filter out feedbacks with empty timestamps and sort by timestamp
+              const approvedFeedbacks = feedbacks
+                .filter((feedback) => feedback.Timestamp)
+                .sort((a, b) => new Date(b.Timestamp) - new Date(a.Timestamp));
 
               totalFeedbacks = approvedFeedbacks.length;
               const container = document.getElementById(

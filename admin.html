@@ -13,199 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      * {
-        font-family: 'Inter', sans-serif;
-      }
-
-      /* Modern Gradient Backgrounds */
-      .admin-gradient {
-        background: linear-gradient(
-          135deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f093fb 100%
-        );
-        position: relative;
-        overflow: hidden;
-      }
-
-      .admin-gradient::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-            circle at 20% 80%,
-            rgba(120, 119, 198, 0.3) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(255, 119, 198, 0.3) 0%,
-            transparent 50%
-          );
-        animation: gradientShift 8s ease-in-out infinite;
-      }
-
-      @keyframes gradientShift {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.8;
-        }
-      }
-
-      /* Glassmorphism Effects */
-      .glass-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
-
-      .glass-sidebar {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        border-right: 1px solid rgba(0, 0, 0, 0.1);
-      }
-
-      /* Modern Form Elements */
-      .modern-input {
-        background: rgba(255, 255, 255, 0.9);
-        border: 2px solid rgba(102, 126, 234, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .modern-input:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        background: rgba(255, 255, 255, 1);
-        outline: none;
-      }
-
-      .modern-select {
-        background: rgba(255, 255, 255, 0.9);
-        border: 2px solid rgba(102, 126, 234, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .modern-select:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        outline: none;
-      }
-
-      /* Sidebar Navigation */
-      .nav-item {
-        transition: all 0.3s ease;
-        border-radius: 12px;
-        margin: 4px 0;
-      }
-
-      .nav-item:hover {
-        background: rgba(102, 126, 234, 0.1);
-        transform: translateX(4px);
-      }
-
-      .nav-item.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-      }
-
-      /* Form Sections */
-      .form-section {
-        display: none;
-        animation: fadeInUp 0.5s ease forwards;
-      }
-
-      .form-section.active {
-        display: block;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Action Buttons */
-      .btn-primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-      }
-
-      .btn-secondary {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        transition: all 0.3s ease;
-      }
-
-      .btn-secondary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
-      }
-
-      .btn-success {
-        background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-        transition: all 0.3s ease;
-      }
-
-      .btn-success:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
-      }
-
-      /* Stats Cards */
-      .stats-card {
-        background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-      }
-
-      .stats-card:hover {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      }
-
-      /* Table Styles */
-      .admin-table {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-      }
-
-      .table-header {
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      }
-
-      /* Custom Scrollbar */
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      .custom-scrollbar::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
-      }
-
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 3px;
-      }
-    </style>
+    <link rel="stylesheet" href="src/admin.css" />
   </head>
   <body
     class="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50"
@@ -539,56 +347,93 @@
           <!-- Recordings Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">📋 Existing Recordings</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                📋 Existing Recordings
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search recordings..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search recordings..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Week</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Month</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Title</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Duration</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Status</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Week
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Month
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Title
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Duration
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Status
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">1</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >1</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="font-medium text-gray-900">Month 1</span>
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">Git Fundamentals</p>
-                        <p class="text-sm text-gray-500">Session 1 & 2 - Git basics, Repository creation</p>
+                        <p class="font-medium text-gray-900">
+                          Git Fundamentals
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Session 1 & 2 - Git basics, Repository creation
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">4 hours</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -596,32 +441,51 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">2</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >2</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="font-medium text-gray-900">Month 1</span>
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">Functions & Syntax</p>
-                        <p class="text-sm text-gray-500">Session 3 & 4 - JavaScript fundamentals</p>
+                        <p class="font-medium text-gray-900">
+                          Functions & Syntax
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Session 3 & 4 - JavaScript fundamentals
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">4 hours</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -629,32 +493,51 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">5</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >5</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="font-medium text-gray-900">Month 2</span>
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">Arrays & Objects</p>
-                        <p class="text-sm text-gray-500">Session 9 & 10 - Advanced data structures</p>
+                        <p class="font-medium text-gray-900">
+                          Arrays & Objects
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Session 9 & 10 - Advanced data structures
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">4 hours</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Draft</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Draft</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -663,18 +546,40 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">24</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">24</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">3</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  3
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -795,58 +700,101 @@
           <!-- Documentation Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">📚 Documentation Resources</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                📚 Documentation Resources
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search documentation..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search documentation..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Icon</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Title</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Category</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">URL</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Status</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Icon
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Title
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Category
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      URL
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Status
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <div class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-lg">
+                      <div
+                        class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-lg"
+                      >
                         <i class="text-xl text-yellow-600 fab fa-js-square"></i>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">JavaScript Documentation</p>
-                        <p class="text-sm text-gray-500">MDN Web Docs - JavaScript Guide</p>
+                        <p class="font-medium text-gray-900">
+                          JavaScript Documentation
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          MDN Web Docs - JavaScript Guide
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">Core Language</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >Core Language</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <a href="#" class="text-sm text-blue-600 hover:text-blue-800">developer.mozilla.org</a>
+                      <a
+                        href="#"
+                        class="text-sm text-blue-600 hover:text-blue-800"
+                        >developer.mozilla.org</a
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -854,34 +802,59 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <div class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg">
+                      <div
+                        class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg"
+                      >
                         <i class="text-xl text-green-600 fab fa-node-js"></i>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">Node.js Documentation</p>
-                        <p class="text-sm text-gray-500">Official Node.js API Reference</p>
+                        <p class="font-medium text-gray-900">
+                          Node.js Documentation
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Official Node.js API Reference
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Backend</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Backend</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <a href="#" class="text-sm text-blue-600 hover:text-blue-800">nodejs.org/docs</a>
+                      <a
+                        href="#"
+                        class="text-sm text-blue-600 hover:text-blue-800"
+                        >nodejs.org/docs</a
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -889,34 +862,59 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg">
+                      <div
+                        class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg"
+                      >
                         <i class="text-xl text-blue-600 fab fa-react"></i>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">React Documentation</p>
-                        <p class="text-sm text-gray-500">The official React.js documentation</p>
+                        <p class="font-medium text-gray-900">
+                          React Documentation
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          The official React.js documentation
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-purple-800 bg-purple-100 rounded-full">Framework</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-purple-800 bg-purple-100 rounded-full"
+                        >Framework</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <a href="#" class="text-sm text-blue-600 hover:text-blue-800">react.dev</a>
+                      <a
+                        href="#"
+                        class="text-sm text-blue-600 hover:text-blue-800"
+                        >react.dev</a
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Draft</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Draft</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -925,17 +923,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">15</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">15</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -1057,38 +1073,60 @@
           <!-- Extensions Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">🧩 VS Code Extensions</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                🧩 VS Code Extensions
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search extensions..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search extensions..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Icon</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Extension Name</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Downloads</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Rating</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Category</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Icon
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Extension Name
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Downloads
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Rating
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Category
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg">
+                      <div
+                        class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg"
+                      >
                         <i class="text-xl text-blue-600 fas fa-code"></i>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div>
                         <p class="font-medium text-gray-900">Live Server</p>
-                        <p class="text-sm text-gray-500">Launch a development local Server with live reload</p>
+                        <p class="text-sm text-gray-500">
+                          Launch a development local Server with live reload
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
@@ -1101,17 +1139,29 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Development</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Development</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1119,14 +1169,18 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <div class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-lg">
+                      <div
+                        class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-lg"
+                      >
                         <i class="text-xl text-purple-600 fas fa-palette"></i>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div>
                         <p class="font-medium text-gray-900">Prettier</p>
-                        <p class="text-sm text-gray-500">Code formatter using Prettier</p>
+                        <p class="text-sm text-gray-500">
+                          Code formatter using Prettier
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
@@ -1139,17 +1193,29 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">Formatter</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >Formatter</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1157,14 +1223,18 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <div class="flex items-center justify-center w-10 h-10 bg-red-100 rounded-lg">
+                      <div
+                        class="flex items-center justify-center w-10 h-10 bg-red-100 rounded-lg"
+                      >
                         <i class="text-xl text-red-600 fas fa-bug"></i>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div>
                         <p class="font-medium text-gray-900">ESLint</p>
-                        <p class="text-sm text-gray-500">Integrates ESLint JavaScript linter</p>
+                        <p class="text-sm text-gray-500">
+                          Integrates ESLint JavaScript linter
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
@@ -1177,17 +1247,29 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">Linting</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full"
+                        >Linting</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1196,17 +1278,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">12</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">12</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -1314,37 +1414,61 @@
           <!-- YouTube Channels Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">📺 YouTube Channels</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                📺 YouTube Channels
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search channels..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search channels..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Channel</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Subscribers</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Content Focus</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Language</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Status</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Channel
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Subscribers
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Content Focus
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Language
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Status
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-red-100 rounded-full">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-red-100 rounded-full"
+                        >
                           <i class="text-xl text-red-600 fab fa-youtube"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Traversy Media</p>
-                          <p class="text-sm text-gray-500">Web development tutorials</p>
+                          <p class="font-medium text-gray-900">
+                            Traversy Media
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Web development tutorials
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -1352,23 +1476,38 @@
                       <span class="font-medium text-gray-600">2.1M</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">Full-Stack</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >Full-Stack</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">English</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1377,12 +1516,20 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-full">
-                          <i class="text-xl text-yellow-600 fab fa-js-square"></i>
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-full"
+                        >
+                          <i
+                            class="text-xl text-yellow-600 fab fa-js-square"
+                          ></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">JavaScript Mastery</p>
-                          <p class="text-sm text-gray-500">Modern JavaScript tutorials</p>
+                          <p class="font-medium text-gray-900">
+                            JavaScript Mastery
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Modern JavaScript tutorials
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -1390,23 +1537,38 @@
                       <span class="font-medium text-gray-600">1.5M</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">JavaScript</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >JavaScript</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">English</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1415,12 +1577,16 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full"
+                        >
                           <i class="text-xl text-green-600 fab fa-node-js"></i>
                         </div>
                         <div>
                           <p class="font-medium text-gray-900">The Net Ninja</p>
-                          <p class="text-sm text-gray-500">Web development tutorials</p>
+                          <p class="text-sm text-gray-500">
+                            Web development tutorials
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -1428,23 +1594,38 @@
                       <span class="font-medium text-gray-600">1.2M</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Frontend</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Frontend</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">English</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Draft</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Draft</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1453,17 +1634,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">8</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">8</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -1576,45 +1775,75 @@
           <!-- Software Tools Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">💻 Software Tools</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                💻 Software Tools
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search tools..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search tools..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Tool</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Category</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Price</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Platform</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Rating</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Tool
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Category
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Price
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Platform
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Rating
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg"
+                        >
                           <i class="text-xl text-blue-600 fab fa-microsoft"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Visual Studio Code</p>
-                          <p class="text-sm text-gray-500">Code editor by Microsoft</p>
+                          <p class="font-medium text-gray-900">
+                            Visual Studio Code
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Code editor by Microsoft
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">Editor</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >Editor</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Free</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Free</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">Cross-platform</span>
@@ -1627,13 +1856,22 @@
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1642,20 +1880,30 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg"
+                        >
                           <i class="text-xl text-green-600 fab fa-node-js"></i>
                         </div>
                         <div>
                           <p class="font-medium text-gray-900">Node.js</p>
-                          <p class="text-sm text-gray-500">JavaScript runtime environment</p>
+                          <p class="text-sm text-gray-500">
+                            JavaScript runtime environment
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Runtime</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Runtime</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Free</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Free</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">Cross-platform</span>
@@ -1668,13 +1916,22 @@
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1683,17 +1940,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">2</span> of <span class="font-medium">10</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">2</span> of
+                <span class="font-medium">10</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -1799,61 +2074,103 @@
           <!-- Activities Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">🎯 Practice Activities</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                🎯 Practice Activities
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search activities..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search activities..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Activity</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Type</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Difficulty</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Duration</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Status</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Activity
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Type
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Difficulty
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Duration
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Status
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg"
+                        >
                           <i class="text-xl text-blue-600 fas fa-code"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Build a Calculator</p>
-                          <p class="text-sm text-gray-500">Create a functional calculator using JavaScript</p>
+                          <p class="font-medium text-gray-900">
+                            Build a Calculator
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Create a functional calculator using JavaScript
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">Project</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >Project</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Beginner</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Beginner</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">2-3 hours</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1862,36 +2179,60 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-lg"
+                        >
                           <i class="text-xl text-yellow-600 fas fa-tasks"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">To-Do List App</p>
-                          <p class="text-sm text-gray-500">Build a complete task management application</p>
+                          <p class="font-medium text-gray-900">
+                            To-Do List App
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Build a complete task management application
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-purple-800 bg-purple-100 rounded-full">Web App</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-purple-800 bg-purple-100 rounded-full"
+                        >Web App</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Intermediate</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Intermediate</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <span class="text-gray-600">4-6 hours</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -1900,17 +2241,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">2</span> of <span class="font-medium">18</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">2</span> of
+                <span class="font-medium">18</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -2031,42 +2390,69 @@
           <!-- GitHub Repositories Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">🗂️ GitHub Repositories</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                🗂️ GitHub Repositories
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search repositories..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search repositories..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Repository</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Language</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Stars</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Level</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Status</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Repository
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Language
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Stars
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Level
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Status
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-lg"
+                        >
                           <i class="text-xl text-gray-600 fab fa-github"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">30-Days-Of-JavaScript</p>
-                          <p class="text-sm text-gray-500">Complete JavaScript course with exercises</p>
+                          <p class="font-medium text-gray-900">
+                            30-Days-Of-JavaScript
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Complete JavaScript course with exercises
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">JavaScript</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >JavaScript</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex items-center">
@@ -2075,20 +2461,35 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Beginner</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Beginner</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2097,17 +2498,26 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg"
+                        >
                           <i class="text-xl text-blue-600 fab fa-react"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">React Examples</p>
-                          <p class="text-sm text-gray-500">Collection of React.js examples and patterns</p>
+                          <p class="font-medium text-gray-900">
+                            React Examples
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Collection of React.js examples and patterns
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">React</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >React</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex items-center">
@@ -2116,20 +2526,35 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Intermediate</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Intermediate</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2138,17 +2563,26 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg"
+                        >
                           <i class="text-xl text-green-600 fab fa-node-js"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Node.js Best Practices</p>
-                          <p class="text-sm text-gray-500">Production-ready Node.js guidelines</p>
+                          <p class="font-medium text-gray-900">
+                            Node.js Best Practices
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Production-ready Node.js guidelines
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Node.js</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Node.js</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex items-center">
@@ -2157,20 +2591,35 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">Advanced</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full"
+                        >Advanced</span
+                      >
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Draft</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Draft</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View"
+                        >
                           <i class="fas fa-external-link-alt"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2179,18 +2628,40 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">25</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">25</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">3</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  3
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -2287,35 +2758,57 @@
             <div class="flex items-center justify-between mb-6">
               <h3 class="text-2xl font-bold text-gray-800">🏷️ Categories</h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search categories..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search categories..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Category</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Color</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Items</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Created</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Status</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Category
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Color
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Items
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Created
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Status
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-lg"
+                        >
                           <i class="text-xl text-blue-600 fas fa-code"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Programming Languages</p>
-                          <p class="text-sm text-gray-500">Core programming concepts and syntax</p>
+                          <p class="font-medium text-gray-900">
+                            Programming Languages
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Core programming concepts and syntax
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -2332,17 +2825,29 @@
                       <span class="text-gray-600">2024-01-15</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View Items">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View Items"
+                        >
                           <i class="fas fa-list"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2351,12 +2856,18 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-lg"
+                        >
                           <i class="text-xl text-green-600 fas fa-tools"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Development Tools</p>
-                          <p class="text-sm text-gray-500">IDEs, editors, and productivity tools</p>
+                          <p class="font-medium text-gray-900">
+                            Development Tools
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            IDEs, editors, and productivity tools
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -2373,17 +2884,29 @@
                       <span class="text-gray-600">2024-01-10</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Active</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Active</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View Items">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View Items"
+                        >
                           <i class="fas fa-list"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2392,12 +2915,18 @@
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-3">
-                        <div class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-lg">
+                        <div
+                          class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-lg"
+                        >
                           <i class="text-xl text-purple-600 fas fa-book"></i>
                         </div>
                         <div>
-                          <p class="font-medium text-gray-900">Learning Resources</p>
-                          <p class="text-sm text-gray-500">Books, tutorials, and documentation</p>
+                          <p class="font-medium text-gray-900">
+                            Learning Resources
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            Books, tutorials, and documentation
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -2414,17 +2943,29 @@
                       <span class="text-gray-600">2024-01-05</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Review</span>
+                      <span
+                        class="px-2 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Review</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View Items">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View Items"
+                        >
                           <i class="fas fa-list"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2433,17 +2974,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">8</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">8</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -2537,36 +3096,61 @@
           <!-- Course Structure Data Table -->
           <div class="p-8 mt-8 glass-card rounded-2xl">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">🗺️ Course Structure</h3>
+              <h3 class="text-2xl font-bold text-gray-800">
+                🗺️ Course Structure
+              </h3>
               <div class="flex space-x-3">
-                <input type="text" placeholder="🔍 Search modules..." class="w-64 px-4 py-2 rounded-lg modern-input">
+                <input
+                  type="text"
+                  placeholder="🔍 Search modules..."
+                  class="w-64 px-4 py-2 rounded-lg modern-input"
+                />
                 <button class="px-4 py-2 text-white rounded-lg btn-success">
                   <i class="mr-2 fas fa-plus"></i>Add New
                 </button>
               </div>
             </div>
-            
+
             <div class="overflow-x-auto">
               <table class="w-full overflow-hidden rounded-lg admin-table">
                 <thead class="table-header">
                   <tr>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Month</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Module</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Duration</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Topics</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Progress</th>
-                    <th class="px-6 py-4 font-semibold text-left text-gray-700">Actions</th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Month
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Module
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Duration
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Topics
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Progress
+                    </th>
+                    <th class="px-6 py-4 font-semibold text-left text-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <span class="px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">Month 1</span>
+                      <span
+                        class="px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                        >Month 1</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">JavaScript Fundamentals</p>
-                        <p class="text-sm text-gray-500">Basic syntax, variables, data types</p>
+                        <p class="font-medium text-gray-900">
+                          JavaScript Fundamentals
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Basic syntax, variables, data types
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
@@ -2574,28 +3158,51 @@
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex flex-wrap gap-1">
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Variables</span>
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Functions</span>
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Objects</span>
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Variables</span
+                        >
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Functions</span
+                        >
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Objects</span
+                        >
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-2">
                         <div class="w-full h-2 bg-gray-200 rounded-full">
-                          <div class="h-2 bg-green-600 rounded-full" style="width: 100%"></div>
+                          <div
+                            class="h-2 bg-green-600 rounded-full"
+                            style="width: 100%"
+                          ></div>
                         </div>
-                        <span class="text-sm text-gray-600 min-w-fit">100%</span>
+                        <span class="text-sm text-gray-600 min-w-fit"
+                          >100%</span
+                        >
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View Details">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View Details"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2603,12 +3210,19 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <span class="px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Month 2</span>
+                      <span
+                        class="px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full"
+                        >Month 2</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">Advanced JavaScript</p>
-                        <p class="text-sm text-gray-500">Arrays, loops, DOM manipulation</p>
+                        <p class="font-medium text-gray-900">
+                          Advanced JavaScript
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Arrays, loops, DOM manipulation
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
@@ -2616,28 +3230,49 @@
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex flex-wrap gap-1">
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Arrays</span>
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">DOM</span>
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Events</span>
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Arrays</span
+                        >
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >DOM</span
+                        >
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Events</span
+                        >
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-2">
                         <div class="w-full h-2 bg-gray-200 rounded-full">
-                          <div class="h-2 bg-blue-600 rounded-full" style="width: 75%"></div>
+                          <div
+                            class="h-2 bg-blue-600 rounded-full"
+                            style="width: 75%"
+                          ></div>
                         </div>
                         <span class="text-sm text-gray-600 min-w-fit">75%</span>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View Details">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View Details"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2645,12 +3280,19 @@
                   </tr>
                   <tr class="transition-colors hover:bg-gray-50">
                     <td class="px-6 py-4">
-                      <span class="px-3 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full">Month 3</span>
+                      <span
+                        class="px-3 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full"
+                        >Month 3</span
+                      >
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <p class="font-medium text-gray-900">React.js Fundamentals</p>
-                        <p class="text-sm text-gray-500">Components, state, props, hooks</p>
+                        <p class="font-medium text-gray-900">
+                          React.js Fundamentals
+                        </p>
+                        <p class="text-sm text-gray-500">
+                          Components, state, props, hooks
+                        </p>
                       </div>
                     </td>
                     <td class="px-6 py-4">
@@ -2658,28 +3300,49 @@
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex flex-wrap gap-1">
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Components</span>
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">State</span>
-                        <span class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded">Hooks</span>
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Components</span
+                        >
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >State</span
+                        >
+                        <span
+                          class="px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded"
+                          >Hooks</span
+                        >
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex items-center space-x-2">
                         <div class="w-full h-2 bg-gray-200 rounded-full">
-                          <div class="h-2 bg-yellow-600 rounded-full" style="width: 25%"></div>
+                          <div
+                            class="h-2 bg-yellow-600 rounded-full"
+                            style="width: 25%"
+                          ></div>
                         </div>
                         <span class="text-sm text-gray-600 min-w-fit">25%</span>
                       </div>
                     </td>
                     <td class="px-6 py-4">
                       <div class="flex space-x-2">
-                        <button class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50" title="Edit">
+                        <button
+                          class="p-2 text-blue-600 rounded-lg hover:text-blue-800 hover:bg-blue-50"
+                          title="Edit"
+                        >
                           <i class="fas fa-edit"></i>
                         </button>
-                        <button class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50" title="View Details">
+                        <button
+                          class="p-2 text-green-600 rounded-lg hover:text-green-800 hover:bg-green-50"
+                          title="View Details"
+                        >
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50" title="Delete">
+                        <button
+                          class="p-2 text-red-600 rounded-lg hover:text-red-800 hover:bg-red-50"
+                          title="Delete"
+                        >
                           <i class="fas fa-trash"></i>
                         </button>
                       </div>
@@ -2688,17 +3351,35 @@
                 </tbody>
               </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="flex items-center justify-between mt-6">
               <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">6</span> results
+                Showing <span class="font-medium">1</span> to
+                <span class="font-medium">3</span> of
+                <span class="font-medium">6</span> results
               </div>
               <div class="flex space-x-2">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Previous</button>
-                <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg">1</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">2</button>
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50">Next</button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border rounded-lg hover:bg-gray-50"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
@@ -2706,74 +3387,6 @@
       </main>
     </div>
 
-    <script>
-      // Sidebar Navigation
-      const navItems = document.querySelectorAll('.nav-item');
-      const formSections = document.querySelectorAll('.form-section');
-
-      navItems.forEach((item) => {
-        item.addEventListener('click', () => {
-          const targetSection = item.dataset.section;
-
-          // Update active navigation
-          navItems.forEach((nav) => nav.classList.remove('active'));
-          item.classList.add('active');
-
-          // Show corresponding section
-          formSections.forEach((section) => {
-            if (section.id === targetSection) {
-              section.classList.add('active');
-            } else {
-              section.classList.remove('active');
-            }
-          });
-        });
-      });
-
-      // Form validation and enhancement
-      const forms = document.querySelectorAll('form');
-      forms.forEach((form) => {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          // Add success feedback
-          const button = form.querySelector('button[type="submit"]');
-          const originalText = button.innerHTML;
-          button.innerHTML = '<i class="mr-2 fas fa-check"></i>Saved!';
-          button.classList.remove('btn-primary');
-          button.classList.add('btn-success');
-
-          setTimeout(() => {
-            button.innerHTML = originalText;
-            button.classList.remove('btn-success');
-            button.classList.add('btn-primary');
-          }, 2000);
-        });
-      });
-
-      // Input focus enhancements
-      const inputs = document.querySelectorAll('.modern-input, .modern-select');
-      inputs.forEach((input) => {
-        input.addEventListener('focus', () => {
-          input.style.transform = 'scale(1.02)';
-        });
-
-        input.addEventListener('blur', () => {
-          input.style.transform = 'scale(1)';
-        });
-      });
-
-      // Auto-save functionality (placeholder)
-      let autoSaveTimeout;
-      inputs.forEach((input) => {
-        input.addEventListener('input', () => {
-          clearTimeout(autoSaveTimeout);
-          autoSaveTimeout = setTimeout(() => {
-            // Auto-save logic would go here
-            console.log('Auto-saving...');
-          }, 3000);
-        });
-      });
-    </script>
+    <script src="./src/admin.js"></script>
   </body>
 </html>

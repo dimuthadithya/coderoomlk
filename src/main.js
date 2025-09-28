@@ -3,18 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
   new Typed('#typed-text', {
     strings: [
       'Master Modern JavaScript',
-      'Learn Git & Version Control',
-      'Deep Dive into SCSS',
-      'Deploy Your Projects',
-      'Domain & Hosting Setup',
-      'JS ES6 Features',
-      'Projects with GitHub'
+      'React Preparation Focus',
+      'GitHub-First Learning',
+      'ES6+ Features & Patterns',
+      'Component Thinking',
+      'Async Programming Mastery',
+      'Build Real Projects',
     ],
     typeSpeed: 50,
     backSpeed: 30,
     backDelay: 2000,
     loop: true,
-    smartBackspace: true
+    smartBackspace: true,
   });
 
   // Get all the elements we need
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let flipdown;
   try {
     // Set target date to August 8, 2025 at midnight (00:00:00)
-    const targetDate = new Date(2025, 7, 8, 0, 0, 0); // Month is 0-indexed, so 7 = August
+    const targetDate = new Date(2025, 9, 4, 0, 0, 0); // Month is 0-indexed, so 7 = August
 
     // Convert to Unix timestamp
     const timestamp = Math.floor(targetDate.getTime() / 1000);
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
       theme: document.documentElement.classList.contains('dark')
         ? 'dark'
         : 'light',
-      headings: ['DAYS', 'HOURS', 'MINUTES', 'SECONDS']
+      headings: ['DAYS', 'HOURS', 'MINUTES', 'SECONDS'],
     });
 
     // Start the countdown
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      hour12: true
+      hour12: true,
     };
     const timeString = now.toLocaleTimeString('en-US', timeOptions);
 
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     };
     const dateString = now.toLocaleDateString('en-US', dateOptions);
 

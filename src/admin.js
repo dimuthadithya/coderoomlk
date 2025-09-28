@@ -943,18 +943,43 @@ window.viewRecording = function (id) {
   // TODO: Implement view functionality
 };
 
-window.deleteRecording = function (id) {
-  if (confirm('Are you sure you want to delete this recording?')) {
-    crud
-      .softDelete(crud.collections.RECORDINGS, id)
-      .then(() => {
-        console.log('Recording deleted successfully');
-        loadRecordingsData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting recording:', error);
-        alert('Failed to delete recording');
-      });
+window.deleteRecording = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this recording?\n\nThis action will mark the recording as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting recording:', id);
+
+      // Show loading feedback
+      const button = document.querySelector(
+        `[onclick="deleteRecording('${id}')"]`
+      );
+      if (button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        button.disabled = true;
+
+        setTimeout(() => {
+          if (button) {
+            button.innerHTML = originalText;
+            button.disabled = false;
+          }
+        }, 2000);
+      }
+
+      await crud.softDelete(crud.collections.RECORDINGS, id);
+      console.log('✅ Recording deleted successfully');
+
+      // Show success message
+      showSuccessMessage('Recording deleted successfully!');
+
+      await loadRecordingsData(); // Reload data
+    } catch (error) {
+      console.error('❌ Error deleting recording:', error);
+      showErrorMessage('Failed to delete recording: ' + error.message);
+    }
   }
 };
 
@@ -982,18 +1007,22 @@ window.editDocumentation = async function (id) {
   }
 };
 
-window.deleteDocumentation = function (id) {
-  if (confirm('Are you sure you want to delete this documentation?')) {
-    crud
-      .softDelete(crud.collections.DOCUMENTATION, id)
-      .then(() => {
-        console.log('Documentation deleted successfully');
-        loadDocumentationData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting documentation:', error);
-        alert('Failed to delete documentation');
-      });
+window.deleteDocumentation = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this documentation?\n\nThis action will mark it as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting documentation:', id);
+      await crud.softDelete(crud.collections.DOCUMENTATION, id);
+      console.log('✅ Documentation deleted successfully');
+      showSuccessMessage('Documentation deleted successfully!');
+      await loadDocumentationData();
+    } catch (error) {
+      console.error('❌ Error deleting documentation:', error);
+      showErrorMessage('Failed to delete documentation: ' + error.message);
+    }
   }
 };
 
@@ -1021,18 +1050,22 @@ window.editExtension = async function (id) {
   }
 };
 
-window.deleteExtension = function (id) {
-  if (confirm('Are you sure you want to delete this extension?')) {
-    crud
-      .softDelete(crud.collections.VSCODE_EXTENSIONS, id)
-      .then(() => {
-        console.log('Extension deleted successfully');
-        loadExtensionsData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting extension:', error);
-        alert('Failed to delete extension');
-      });
+window.deleteExtension = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this extension?\n\nThis action will mark it as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting extension:', id);
+      await crud.softDelete(crud.collections.VSCODE_EXTENSIONS, id);
+      console.log('✅ Extension deleted successfully');
+      showSuccessMessage('Extension deleted successfully!');
+      await loadExtensionsData();
+    } catch (error) {
+      console.error('❌ Error deleting extension:', error);
+      showErrorMessage('Failed to delete extension: ' + error.message);
+    }
   }
 };
 
@@ -1060,18 +1093,22 @@ window.editChannel = async function (id) {
   }
 };
 
-window.deleteChannel = function (id) {
-  if (confirm('Are you sure you want to delete this channel?')) {
-    crud
-      .softDelete(crud.collections.YOUTUBE_CHANNELS, id)
-      .then(() => {
-        console.log('Channel deleted successfully');
-        loadYouTubeChannelsData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting channel:', error);
-        alert('Failed to delete channel');
-      });
+window.deleteChannel = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this YouTube channel?\n\nThis action will mark it as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting channel:', id);
+      await crud.softDelete(crud.collections.YOUTUBE_CHANNELS, id);
+      console.log('✅ Channel deleted successfully');
+      showSuccessMessage('YouTube channel deleted successfully!');
+      await loadYouTubeChannelsData();
+    } catch (error) {
+      console.error('❌ Error deleting channel:', error);
+      showErrorMessage('Failed to delete channel: ' + error.message);
+    }
   }
 };
 
@@ -1099,18 +1136,22 @@ window.editTool = async function (id) {
   }
 };
 
-window.deleteTool = function (id) {
-  if (confirm('Are you sure you want to delete this tool?')) {
-    crud
-      .softDelete(crud.collections.SOFTWARE_TOOLS, id)
-      .then(() => {
-        console.log('Tool deleted successfully');
-        loadSoftwareToolsData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting tool:', error);
-        alert('Failed to delete tool');
-      });
+window.deleteTool = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this software tool?\n\nThis action will mark it as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting tool:', id);
+      await crud.softDelete(crud.collections.SOFTWARE_TOOLS, id);
+      console.log('✅ Tool deleted successfully');
+      showSuccessMessage('Software tool deleted successfully!');
+      await loadSoftwareToolsData();
+    } catch (error) {
+      console.error('❌ Error deleting tool:', error);
+      showErrorMessage('Failed to delete tool: ' + error.message);
+    }
   }
 };
 
@@ -1141,18 +1182,22 @@ window.editActivity = async function (id) {
   }
 };
 
-window.deleteActivity = function (id) {
-  if (confirm('Are you sure you want to delete this activity?')) {
-    crud
-      .softDelete(crud.collections.PRACTICE_ACTIVITIES, id)
-      .then(() => {
-        console.log('Activity deleted successfully');
-        loadActivitiesData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting activity:', error);
-        alert('Failed to delete activity');
-      });
+window.deleteActivity = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this practice activity?\n\nThis action will mark it as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting activity:', id);
+      await crud.softDelete(crud.collections.PRACTICE_ACTIVITIES, id);
+      console.log('✅ Activity deleted successfully');
+      showSuccessMessage('Practice activity deleted successfully!');
+      await loadActivitiesData();
+    } catch (error) {
+      console.error('❌ Error deleting activity:', error);
+      showErrorMessage('Failed to delete activity: ' + error.message);
+    }
   }
 };
 
@@ -1180,18 +1225,22 @@ window.editRepository = async function (id) {
   }
 };
 
-window.deleteRepository = function (id) {
-  if (confirm('Are you sure you want to delete this repository?')) {
-    crud
-      .softDelete(crud.collections.GITHUB_REPOS, id)
-      .then(() => {
-        console.log('Repository deleted successfully');
-        loadRepositoriesData(); // Reload data
-      })
-      .catch((error) => {
-        console.error('Error deleting repository:', error);
-        alert('Failed to delete repository');
-      });
+window.deleteRepository = async function (id) {
+  if (
+    confirm(
+      "🗑️ Are you sure you want to delete this repository?\n\nThis action will mark it as inactive but won't permanently remove it."
+    )
+  ) {
+    try {
+      console.log('🗑️ Deleting repository:', id);
+      await crud.softDelete(crud.collections.GITHUB_REPOS, id);
+      console.log('✅ Repository deleted successfully');
+      showSuccessMessage('Repository deleted successfully!');
+      await loadRepositoriesData();
+    } catch (error) {
+      console.error('❌ Error deleting repository:', error);
+      showErrorMessage('Failed to delete repository: ' + error.message);
+    }
   }
 };
 
@@ -1952,6 +2001,113 @@ async function initializeAdminDashboard() {
   } catch (error) {
     console.error('❌ Error initializing admin dashboard:', error);
   }
+}
+
+// Utility functions for user feedback
+function showSuccessMessage(message) {
+  console.log('✅', message);
+
+  // Remove any existing message
+  const existingMessage = document.querySelector('.success-message');
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+
+  // Create success message element
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'success-message';
+  messageDiv.innerHTML = `
+    <div style="
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #22c55e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 9999;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: slideInRight 0.3s ease-out;
+    ">
+      <i class="fas fa-check-circle"></i>
+      ${message}
+    </div>
+    <style>
+      @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    </style>
+  `;
+
+  document.body.appendChild(messageDiv);
+
+  // Auto remove after 3 seconds
+  setTimeout(() => {
+    if (messageDiv && messageDiv.parentNode) {
+      messageDiv.style.animation = 'slideInRight 0.3s ease-out reverse';
+      setTimeout(() => messageDiv.remove(), 300);
+    }
+  }, 3000);
+}
+
+function showErrorMessage(message) {
+  console.error('❌', message);
+
+  // Remove any existing message
+  const existingMessage = document.querySelector('.error-message');
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+
+  // Create error message element
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'error-message';
+  messageDiv.innerHTML = `
+    <div style="
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ef4444;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 9999;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: slideInRight 0.3s ease-out;
+    ">
+      <i class="fas fa-exclamation-triangle"></i>
+      ${message}
+    </div>
+    <style>
+      @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    </style>
+  `;
+
+  document.body.appendChild(messageDiv);
+
+  // Auto remove after 5 seconds (longer for errors)
+  setTimeout(() => {
+    if (messageDiv && messageDiv.parentNode) {
+      messageDiv.style.animation = 'slideInRight 0.3s ease-out reverse';
+      setTimeout(() => messageDiv.remove(), 300);
+    }
+  }, 5000);
 }
 
 // Initialize when DOM is loaded - SINGLE EVENT LISTENER

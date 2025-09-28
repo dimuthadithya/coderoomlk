@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Resource Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Modern Gradient Backgrounds */
+      .admin-gradient {
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .admin-gradient::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.3) 0%,
+            transparent 50%
+          );
+        animation: gradientShift 8s ease-in-out infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      /* Glassmorphism Effects */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .glass-sidebar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      /* Modern Form Elements */
+      .modern-input {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .modern-input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        background: rgba(255, 255, 255, 1);
+        outline: none;
+      }
+
+      .modern-select {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .modern-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        outline: none;
+      }
+
+      /* Sidebar Navigation */
+      .nav-item {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        margin: 4px 0;
+      }
+
+      .nav-item:hover {
+        background: rgba(102, 126, 234, 0.1);
+        transform: translateX(4px);
+      }
+
+      .nav-item.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      /* Form Sections */
+      .form-section {
+        display: none;
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      .form-section.active {
+        display: block;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Action Buttons */
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+      }
+
+      .btn-success {
+        background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+        transition: all 0.3s ease;
+      }
+
+      .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+      }
+
+      /* Stats Cards */
+      .stats-card {
+        background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .stats-card:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Table Styles */
+      .admin-table {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      .table-header {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      }
+
+      /* Custom Scrollbar */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 min-h-screen"
+  >
+    <!-- Header -->
+    <header class="admin-gradient text-white py-6 shadow-2xl">
+      <div class="relative z-10 container mx-auto px-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold">🛠️ Admin Dashboard</h1>
+            <p class="text-lg opacity-90">Resource Management System</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="glass-card px-4 py-2 rounded-full">
+              <span class="text-gray-800 font-medium">👨‍💻 Admin User</span>
+            </div>
+            <button
+              class="glass-card p-3 rounded-full hover:bg-white/20 transition-colors"
+            >
+              <i class="fas fa-sign-out-alt text-gray-800"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-80 glass-sidebar p-6 custom-scrollbar overflow-y-auto">
+        <nav class="space-y-2">
+          <div
+            class="nav-item active p-4 cursor-pointer"
+            data-section="dashboard"
+          >
+            <i class="fas fa-tachometer-alt mr-3"></i>
+            <span class="font-medium">Dashboard Overview</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="recordings">
+            <i class="fas fa-video mr-3"></i>
+            <span class="font-medium">Course Recordings</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="documentation">
+            <i class="fas fa-book mr-3"></i>
+            <span class="font-medium">Documentation</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="extensions">
+            <i class="fas fa-puzzle-piece mr-3"></i>
+            <span class="font-medium">VS Code Extensions</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="youtube">
+            <i class="fab fa-youtube mr-3"></i>
+            <span class="font-medium">YouTube Channels</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="software">
+            <i class="fas fa-download mr-3"></i>
+            <span class="font-medium">Software Tools</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="activities">
+            <i class="fas fa-tasks mr-3"></i>
+            <span class="font-medium">Practice Activities</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="repositories">
+            <i class="fab fa-github mr-3"></i>
+            <span class="font-medium">GitHub Repositories</span>
+          </div>
+          <div class="nav-item p-4 cursor-pointer" data-section="categories">
+            <i class="fas fa-tags mr-3"></i>
+            <span class="font-medium">Categories</span>
+          </div>
+          <div
+            class="nav-item p-4 cursor-pointer"
+            data-section="course-structure"
+          >
+            <i class="fas fa-sitemap mr-3"></i>
+            <span class="font-medium">Course Structure</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8 custom-scrollbar overflow-y-auto">
+        <!-- Dashboard Overview -->
+        <section id="dashboard" class="form-section active">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              📊 Dashboard Overview
+            </h2>
+            <p class="text-gray-600">Quick stats and recent activity</p>
+          </div>
+
+          <!-- Stats Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          >
+            <div class="stats-card p-6 rounded-2xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">
+                    Total Recordings
+                  </p>
+                  <p class="text-3xl font-bold text-blue-600">24</p>
+                </div>
+                <div class="bg-blue-100 p-3 rounded-full">
+                  <i class="fas fa-video text-blue-600 text-xl"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-card p-6 rounded-2xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">Documentation</p>
+                  <p class="text-3xl font-bold text-green-600">15</p>
+                </div>
+                <div class="bg-green-100 p-3 rounded-full">
+                  <i class="fas fa-book text-green-600 text-xl"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-card p-6 rounded-2xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">Extensions</p>
+                  <p class="text-3xl font-bold text-purple-600">12</p>
+                </div>
+                <div class="bg-purple-100 p-3 rounded-full">
+                  <i class="fas fa-puzzle-piece text-purple-600 text-xl"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-card p-6 rounded-2xl">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">
+                    YouTube Channels
+                  </p>
+                  <p class="text-3xl font-bold text-red-600">8</p>
+                </div>
+                <div class="bg-red-100 p-3 rounded-full">
+                  <i class="fab fa-youtube text-red-600 text-xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              📈 Recent Activity
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-center p-4 bg-blue-50 rounded-lg">
+                <div class="bg-blue-600 p-2 rounded-full mr-4">
+                  <i class="fas fa-plus text-white"></i>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-800">
+                    Added new recording: Week 24 - Final React Project
+                  </p>
+                  <p class="text-sm text-gray-600">2 hours ago</p>
+                </div>
+              </div>
+              <div class="flex items-center p-4 bg-green-50 rounded-lg">
+                <div class="bg-green-600 p-2 rounded-full mr-4">
+                  <i class="fas fa-edit text-white"></i>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-800">
+                    Updated documentation: React Official Docs
+                  </p>
+                  <p class="text-sm text-gray-600">5 hours ago</p>
+                </div>
+              </div>
+              <div class="flex items-center p-4 bg-purple-50 rounded-lg">
+                <div class="bg-purple-600 p-2 rounded-full mr-4">
+                  <i class="fas fa-plus text-white"></i>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-800">
+                    Added new extension: ES7+ React/Redux/React-Native snippets
+                  </p>
+                  <p class="text-sm text-gray-600">1 day ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Course Recordings Form -->
+        <section id="recordings" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              🎥 Course Recordings Management
+            </h2>
+            <p class="text-gray-600">Add and manage weekly course recordings</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Week Number</label
+                  >
+                  <input
+                    type="number"
+                    min="1"
+                    max="24"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="1"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Month Number</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Month</option>
+                    <option value="1">
+                      Month 1: Foundations with Git/GitHub
+                    </option>
+                    <option value="2">Month 2: Advanced JavaScript</option>
+                    <option value="3">Month 3: DOM & Web APIs</option>
+                    <option value="4">Month 4: Project Development</option>
+                    <option value="5">
+                      Month 5: Modern JavaScript & Tools
+                    </option>
+                    <option value="6">Month 6: React Preparation</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Recording Title</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Git Fundamentals"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Session 1 & 2 - Duration: 4 hours"
+                ></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Video URL</label
+                  >
+                  <input
+                    type="url"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="https://example.com/recording"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Duration</label
+                  >
+                  <input
+                    type="text"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="4 hours"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Session Numbers (comma separated)</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="1, 2"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Topics Covered (comma separated)</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="Git basics, Repository creation, Branching"
+                />
+              </div>
+
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="recording-active"
+                  class="mr-3 h-4 w-4 text-blue-600"
+                />
+                <label
+                  for="recording-active"
+                  class="text-sm font-semibold text-gray-700"
+                  >Active/Published</label
+                >
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Recording
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Documentation Resources Form -->
+        <section id="documentation" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              📚 Documentation Resources
+            </h2>
+            <p class="text-gray-600">
+              Manage official docs, guides, and reference materials
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Resource Title</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., MDN JavaScript Guide"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Comprehensive JavaScript documentation covering basics, syntax, and core concepts"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Resource URL</label
+                >
+                <input
+                  type="url"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Category</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Category</option>
+                    <option value="documentation">
+                      Official Documentation
+                    </option>
+                    <option value="tutorial">Tutorial</option>
+                    <option value="reference">Reference Guide</option>
+                    <option value="cheatsheet">Cheat Sheet</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Difficulty Level</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Difficulty</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Tags (comma separated)</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="javascript, reference, official"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Icon Class</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="fas fa-book"
+                />
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Documentation
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- VS Code Extensions Form -->
+        <section id="extensions" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              🧩 VS Code Extensions
+            </h2>
+            <p class="text-gray-600">
+              Manage recommended VS Code extensions for development
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Extension Name</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Prettier - Code formatter"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Publisher</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Prettier"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Code formatter using prettier"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Installation URL</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="vscode:extension/esbenp.prettier-vscode"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Category</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Category</option>
+                    <option value="formatting">Formatting</option>
+                    <option value="productivity">Productivity</option>
+                    <option value="debugging">Debugging</option>
+                    <option value="git">Git Integration</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="react">React</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Rating</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="1"
+                    max="5"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="4.8"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Install Count</label
+                  >
+                  <input
+                    type="text"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="25M+"
+                  />
+                </div>
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Extension
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- YouTube Channels Form -->
+        <section id="youtube" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              📺 YouTube Channels
+            </h2>
+            <p class="text-gray-600">
+              Curate YouTube channels and educational content
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Channel Name</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Traversy Media"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Channel URL</label
+                >
+                <input
+                  type="url"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="https://www.youtube.com/@TraversyMedia"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Practical web development tutorials covering JavaScript, React, and modern tools"
+                ></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Category</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Category</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="react">React</option>
+                    <option value="general">General Programming</option>
+                    <option value="challenges">Coding Challenges</option>
+                    <option value="projects">Projects</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Subscriber Count</label
+                  >
+                  <input
+                    type="text"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="2.1M"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Focus Area</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="Web Development, JavaScript, React"
+                />
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Channel
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Software Tools Form -->
+        <section id="software" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              💻 Software Tools
+            </h2>
+            <p class="text-gray-600">
+              Manage development tools, browsers, and applications
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Tool Name</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Visual Studio Code"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Free, powerful code editor with JavaScript and Git integration"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Download URL</label
+                >
+                <input
+                  type="url"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="https://code.visualstudio.com/"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Category</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Category</option>
+                    <option value="editor">Code Editor</option>
+                    <option value="browser">Browser</option>
+                    <option value="runtime">Runtime</option>
+                    <option value="tool">Development Tool</option>
+                    <option value="version-control">Version Control</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Platform</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Platform</option>
+                    <option value="cross-platform">Cross Platform</option>
+                    <option value="windows">Windows</option>
+                    <option value="mac">macOS</option>
+                    <option value="linux">Linux</option>
+                    <option value="web">Web-based</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="software-free"
+                  class="mr-3 h-4 w-4 text-blue-600"
+                />
+                <label
+                  for="software-free"
+                  class="text-sm font-semibold text-gray-700"
+                  >Free Software</label
+                >
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Software
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Practice Activities Form -->
+        <section id="activities" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              🎯 Practice Activities
+            </h2>
+            <p class="text-gray-600">
+              Manage coding challenges, exercises, and project ideas
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Activity Name</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Todo List App"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Build a todo application with local storage and CRUD operations"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Activity URL</label
+                >
+                <input
+                  type="url"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="https://codepen.io/challenge/todo-app"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Difficulty</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Difficulty</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Estimated Time</label
+                  >
+                  <input
+                    type="text"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="2-3 hours"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Skills Practiced (comma separated)</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="DOM manipulation, Local Storage, Event handling"
+                />
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Activity
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- GitHub Repositories Form -->
+        <section id="repositories" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              🗂️ GitHub Repositories
+            </h2>
+            <p class="text-gray-600">
+              Curate useful GitHub repos and learning resources
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Repository Name</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., 30-seconds-of-code"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Owner/Organization</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., 30-seconds"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Short JavaScript code snippets for all your development needs"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >GitHub URL</label
+                >
+                <input
+                  type="url"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="https://github.com/30-seconds/30-seconds-of-code"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Stars</label
+                  >
+                  <input
+                    type="text"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="120k"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Category</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Category</option>
+                    <option value="learning">Learning Resource</option>
+                    <option value="template">Project Template</option>
+                    <option value="library">Library/Framework</option>
+                    <option value="tool">Development Tool</option>
+                    <option value="example">Example Project</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Primary Language</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Language</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="mixed">Mixed</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Repository
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Categories Form -->
+        <section id="categories" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              🏷️ Resource Categories
+            </h2>
+            <p class="text-gray-600">Define and manage resource categories</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Category Name</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Documentation"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Description</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-24"
+                  placeholder="Official documentation and reference materials"
+                ></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Icon Class</label
+                  >
+                  <input
+                    type="text"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="fas fa-book"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Color Scheme</label
+                  >
+                  <select class="modern-select w-full px-4 py-3 rounded-lg">
+                    <option value="">Select Color</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="purple">Purple</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="pink">Pink</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-2"
+                    >Display Order</label
+                  >
+                  <input
+                    type="number"
+                    class="modern-input w-full px-4 py-3 rounded-lg"
+                    placeholder="1"
+                  />
+                </div>
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Category
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Course Structure Form -->
+        <section id="course-structure" class="form-section">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              🗺️ Course Structure
+            </h2>
+            <p class="text-gray-600">
+              Organize course months, weeks, and learning objectives
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Month Number</label
+                >
+                <input
+                  type="number"
+                  min="1"
+                  max="6"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="1"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Month Title</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="e.g., Foundations with Git/GitHub"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Week Numbers (comma separated)</label
+                >
+                <input
+                  type="text"
+                  class="modern-input w-full px-4 py-3 rounded-lg"
+                  placeholder="1, 2, 3, 4"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Topics Covered</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-32"
+                  placeholder="JavaScript fundamentals, Variables and data types, Functions and control structures, Git version control"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                  >Learning Objectives</label
+                >
+                <textarea
+                  class="modern-input w-full px-4 py-3 rounded-lg h-32"
+                  placeholder="Students will understand JavaScript basics, Master Git workflows, Build interactive web applications"
+                ></textarea>
+              </div>
+
+              <div class="flex space-x-4">
+                <button
+                  type="submit"
+                  class="btn-primary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-save mr-2"></i>Save Structure
+                </button>
+                <button
+                  type="button"
+                  class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Sidebar Navigation
+      const navItems = document.querySelectorAll('.nav-item');
+      const formSections = document.querySelectorAll('.form-section');
+
+      navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const targetSection = item.dataset.section;
+
+          // Update active navigation
+          navItems.forEach((nav) => nav.classList.remove('active'));
+          item.classList.add('active');
+
+          // Show corresponding section
+          formSections.forEach((section) => {
+            if (section.id === targetSection) {
+              section.classList.add('active');
+            } else {
+              section.classList.remove('active');
+            }
+          });
+        });
+      });
+
+      // Form validation and enhancement
+      const forms = document.querySelectorAll('form');
+      forms.forEach((form) => {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // Add success feedback
+          const button = form.querySelector('button[type="submit"]');
+          const originalText = button.innerHTML;
+          button.innerHTML = '<i class="fas fa-check mr-2"></i>Saved!';
+          button.classList.remove('btn-primary');
+          button.classList.add('btn-success');
+
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+          }, 2000);
+        });
+      });
+
+      // Input focus enhancements
+      const inputs = document.querySelectorAll('.modern-input, .modern-select');
+      inputs.forEach((input) => {
+        input.addEventListener('focus', () => {
+          input.style.transform = 'scale(1.02)';
+        });
+
+        input.addEventListener('blur', () => {
+          input.style.transform = 'scale(1)';
+        });
+      });
+
+      // Auto-save functionality (placeholder)
+      let autoSaveTimeout;
+      inputs.forEach((input) => {
+        input.addEventListener('input', () => {
+          clearTimeout(autoSaveTimeout);
+          autoSaveTimeout = setTimeout(() => {
+            // Auto-save logic would go here
+            console.log('Auto-saving...');
+          }, 3000);
+        });
+      });
+    </script>
+  </body>
+</html>

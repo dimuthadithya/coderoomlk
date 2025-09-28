@@ -370,7 +370,7 @@ async function loadRepositoriesData() {
  */
 function createRecordingTableRow(recording) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     recording.is_active !== false
@@ -434,7 +434,7 @@ function createRecordingTableRow(recording) {
  */
 function createDocumentationTableRow(doc) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     doc.is_active !== false
@@ -500,7 +500,7 @@ function createDocumentationTableRow(doc) {
  */
 function createExtensionTableRow(extension) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     extension.is_active !== false
@@ -574,7 +574,7 @@ function createExtensionTableRow(extension) {
  */
 function createYouTubeChannelTableRow(channel) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     channel.is_active !== false
@@ -643,7 +643,7 @@ function createYouTubeChannelTableRow(channel) {
  */
 function createSoftwareToolTableRow(tool) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     tool.is_active !== false
@@ -718,7 +718,7 @@ function createSoftwareToolTableRow(tool) {
  */
 function createActivityTableRow(activity) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     activity.is_active !== false
@@ -791,7 +791,7 @@ function createActivityTableRow(activity) {
  */
 function createRepositoryTableRow(repo) {
   const row = document.createElement('tr');
-  row.className = 'hover:bg-gray-50 transition-colors';
+  row.className = 'transition-colors hover:bg-gray-50';
 
   const statusClass =
     repo.is_active !== false
@@ -885,31 +885,6 @@ function updatePaginationInfo(section, totalItems) {
 }
 
 // ==================== INITIALIZATION ====================
-
-// Initialize the admin dashboard when DOM is loaded
-document.addEventListener('DOMContentLoaded', async function () {
-  console.log('🚀 Admin Dashboard Initializing...');
-
-  try {
-    // Load all data sections
-    await Promise.all([
-      loadRecordingsData(),
-      loadDocumentationData(),
-      loadExtensionsData(),
-      loadYouTubeChannelsData(),
-      loadSoftwareToolsData(),
-      loadActivitiesData(),
-      loadRepositoriesData(),
-    ]);
-
-    console.log('✅ All data loaded successfully!');
-  } catch (error) {
-    console.error('❌ Error initializing dashboard:', error);
-  }
-
-  // Initialize sidebar navigation
-  initializeSidebarNavigation();
-});
 
 // Sidebar Navigation
 function initializeSidebarNavigation() {
@@ -1086,29 +1061,281 @@ window.deleteRepository = function (id) {
 
 // ==================== FORM HANDLING ====================
 
-// Form validation and enhancement
-document.addEventListener('DOMContentLoaded', function () {
-  const forms = document.querySelectorAll('form');
-  forms.forEach((form) => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+/**
+ * Handle recordings form submission
+ */
+async function handleRecordingsForm(formData) {
+  console.log('🎥 Processing recordings form data...');
 
-      // Add success feedback
-      const button = form.querySelector('button[type="submit"]');
-      const originalText = button.innerHTML;
-      button.innerHTML = '<i class="mr-2 fas fa-check"></i>Saved!';
-      button.classList.remove('btn-primary');
-      button.classList.add('btn-success');
+  const data = {
+    week: parseInt(formData.get('week')),
+    month: parseInt(formData.get('month')),
+    title: formData.get('title'),
+    description: formData.get('description'),
+    video_url: formData.get('video_url'),
+    duration: formData.get('duration'),
+    sessions: formData
+      .get('sessions')
+      .split(',')
+      .map((s) => s.trim()),
+    topics: formData
+      .get('topics')
+      .split(',')
+      .map((t) => t.trim()),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
 
-      setTimeout(() => {
-        button.innerHTML = originalText;
-        button.classList.remove('btn-success');
-        button.classList.add('btn-primary');
-      }, 2000);
-    });
+  console.log('📝 Recording data to save:', data);
+
+  const docId = await crud.create(crud.collections.RECORDINGS, data);
+  console.log('✅ Recording saved with ID:', docId);
+
+  await loadRecordingsData(); // Refresh the table
+  console.log('🔄 Recordings table refreshed');
+
+  return docId;
+}
+
+/**
+ * Handle documentation form submission
+ */
+async function handleDocumentationForm(formData) {
+  const data = {
+    title: formData.get('title'),
+    description: formData.get('description'),
+    url: formData.get('url'),
+    category: formData.get('category'),
+    tags: formData
+      .get('tags')
+      .split(',')
+      .map((t) => t.trim()),
+    difficulty: formData.get('difficulty'),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
+
+  const docId = await crud.create(crud.collections.DOCUMENTATION, data);
+  await loadDocumentationData();
+  return docId;
+}
+
+/**
+ * Handle extensions form submission
+ */
+async function handleExtensionsForm(formData) {
+  const data = {
+    name: formData.get('name'),
+    description: formData.get('description'),
+    extension_id: formData.get('extension_id'),
+    category: formData.get('category'),
+    publisher: formData.get('publisher'),
+    install_command: formData.get('install_command'),
+    tags: formData
+      .get('tags')
+      .split(',')
+      .map((t) => t.trim()),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
+
+  const docId = await crud.create(crud.collections.VSCODE_EXTENSIONS, data);
+  await loadExtensionsData();
+  return docId;
+}
+
+/**
+ * Handle YouTube channels form submission
+ */
+async function handleYouTubeForm(formData) {
+  const data = {
+    channel_name: formData.get('channel_name'),
+    channel_url: formData.get('channel_url'),
+    description: formData.get('description'),
+    category: formData.get('category'),
+    subscriber_count: formData.get('subscriber_count'),
+    language: formData.get('language'),
+    tags: formData
+      .get('tags')
+      .split(',')
+      .map((t) => t.trim()),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
+
+  const docId = await crud.create(crud.collections.YOUTUBE_CHANNELS, data);
+  await loadYouTubeChannelsData();
+  return docId;
+}
+
+/**
+ * Handle software tools form submission
+ */
+async function handleSoftwareForm(formData) {
+  const data = {
+    name: formData.get('name'),
+    description: formData.get('description'),
+    download_url: formData.get('download_url'),
+    category: formData.get('category'),
+    platform: formData.get('platform'),
+    version: formData.get('version'),
+    license: formData.get('license'),
+    is_free: formData.get('is_free') === 'on',
+    tags: formData
+      .get('tags')
+      .split(',')
+      .map((t) => t.trim()),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
+
+  const docId = await crud.create(crud.collections.SOFTWARE_TOOLS, data);
+  await loadSoftwareToolsData();
+  return docId;
+}
+
+/**
+ * Handle activities form submission
+ */
+async function handleActivitiesForm(formData) {
+  const data = {
+    title: formData.get('title'),
+    description: formData.get('description'),
+    instructions: formData.get('instructions'),
+    difficulty: formData.get('difficulty'),
+    estimated_time: formData.get('estimated_time'),
+    category: formData.get('category'),
+    tags: formData
+      .get('tags')
+      .split(',')
+      .map((t) => t.trim()),
+    prerequisites: formData
+      .get('prerequisites')
+      .split(',')
+      .map((p) => p.trim()),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
+
+  const docId = await crud.create(crud.collections.PRACTICE_ACTIVITIES, data);
+  await loadActivitiesData();
+  return docId;
+}
+
+/**
+ * Handle repositories form submission
+ */
+async function handleRepositoriesForm(formData) {
+  const data = {
+    name: formData.get('name'),
+    description: formData.get('description'),
+    repository_url: formData.get('repository_url'),
+    language: formData.get('language'),
+    stars: parseInt(formData.get('stars')) || 0,
+    level: formData.get('level'),
+    category: formData.get('category'),
+    tags: formData
+      .get('tags')
+      .split(',')
+      .map((t) => t.trim()),
+    active: formData.get('active') === 'on',
+    status: 'published',
+  };
+
+  const docId = await crud.create(crud.collections.GITHUB_REPOS, data);
+  await loadRepositoriesData();
+  return docId;
+}
+
+/**
+ * Main form submission handler
+ */
+function setupFormHandlers() {
+  // Get all forms and add submission handlers
+  const formHandlers = {
+    'recordings-form': handleRecordingsForm,
+    'documentation-form': handleDocumentationForm,
+    'extensions-form': handleExtensionsForm,
+    'youtube-form': handleYouTubeForm,
+    'software-form': handleSoftwareForm,
+    'activities-form': handleActivitiesForm,
+    'repositories-form': handleRepositoriesForm,
+  };
+
+  Object.entries(formHandlers).forEach(([formId, handler]) => {
+    const form = document.getElementById(formId);
+    if (form) {
+      // Add a flag to prevent duplicate submissions
+      let isSubmitting = false;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Prevent duplicate submissions
+        if (isSubmitting) {
+          console.log('Form submission already in progress, ignoring...');
+          return;
+        }
+
+        isSubmitting = true;
+        console.log(`Submitting form: ${formId}`);
+
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.innerHTML;
+
+        try {
+          // Show loading state
+          button.innerHTML =
+            '<i class="mr-2 fas fa-spinner fa-spin"></i>Saving...';
+          button.disabled = true;
+
+          // Submit form data
+          const formData = new FormData(form);
+          await handler(formData);
+
+          // Show success state
+          button.innerHTML = '<i class="mr-2 fas fa-check"></i>Saved!';
+          button.classList.remove('btn-primary');
+          button.classList.add('btn-success');
+
+          // Reset form
+          form.reset();
+
+          // Reset button after delay
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+            button.disabled = false;
+            isSubmitting = false; // Reset submission flag
+          }, 2000);
+        } catch (error) {
+          console.error('Error saving data:', error);
+
+          // Show error state
+          button.innerHTML =
+            '<i class="mr-2 fas fa-exclamation-triangle"></i>Error!';
+          button.classList.remove('btn-primary');
+          button.classList.add('btn-danger');
+
+          // Reset button after delay
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('btn-danger');
+            button.classList.add('btn-primary');
+            button.disabled = false;
+            isSubmitting = false; // Reset submission flag
+          }, 2000);
+
+          alert('Error saving data: ' + error.message);
+        }
+      });
+    }
   });
+}
 
-  // Input focus enhancements
+// Form validation and enhancement functions
+function setupInputEnhancements() {
   const inputs = document.querySelectorAll('.modern-input, .modern-select');
   inputs.forEach((input) => {
     input.addEventListener('focus', () => {
@@ -1119,19 +1346,7 @@ document.addEventListener('DOMContentLoaded', function () {
       input.style.transform = 'scale(1)';
     });
   });
-
-  // Auto-save functionality (placeholder)
-  let autoSaveTimeout;
-  inputs.forEach((input) => {
-    input.addEventListener('input', () => {
-      clearTimeout(autoSaveTimeout);
-      autoSaveTimeout = setTimeout(() => {
-        // Auto-save logic would go here
-        console.log('Auto-saving...');
-      }, 3000);
-    });
-  });
-});
+}
 
 // ==================== SEARCH FUNCTIONALITY ====================
 
@@ -1215,26 +1430,37 @@ async function reloadSectionData(sectionName) {
 
 // Main initialization function
 async function initializeAdminDashboard() {
-  console.log('Initializing Admin Dashboard...');
+  console.log('🚀 Initializing Admin Dashboard...');
 
   try {
     // Load all data
-    await loadRecordingsData();
-    await loadDocumentationData();
-    await loadExtensionsData();
-    await loadYouTubeChannelsData();
-    await loadSoftwareToolsData();
-    await loadActivitiesData();
-    await loadRepositoriesData();
+    await Promise.all([
+      loadRecordingsData(),
+      loadDocumentationData(),
+      loadExtensionsData(),
+      loadYouTubeChannelsData(),
+      loadSoftwareToolsData(),
+      loadActivitiesData(),
+      loadRepositoriesData(),
+    ]);
+
+    // Initialize sidebar navigation
+    initializeSidebarNavigation();
 
     // Setup search functionality
     setupSearchFunctionality();
 
-    console.log('Admin Dashboard initialized successfully!');
+    // Setup form handlers
+    setupFormHandlers();
+
+    // Setup input enhancements
+    setupInputEnhancements();
+
+    console.log('✅ Admin Dashboard initialized successfully!');
   } catch (error) {
-    console.error('Error initializing admin dashboard:', error);
+    console.error('❌ Error initializing admin dashboard:', error);
   }
 }
 
-// Initialize when DOM is loaded
+// Initialize when DOM is loaded - SINGLE EVENT LISTENER
 document.addEventListener('DOMContentLoaded', initializeAdminDashboard);

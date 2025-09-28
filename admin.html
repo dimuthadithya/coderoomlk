@@ -214,7 +214,7 @@
           </div>
 
           <div class="p-8 glass-card rounded-2xl">
-            <form class="space-y-6">
+            <form id="recordings-form" class="space-y-6">
               <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
                   <label class="block mb-2 text-sm font-semibold text-gray-700"
@@ -222,17 +222,23 @@
                   >
                   <input
                     type="number"
+                    name="week"
                     min="1"
                     max="24"
                     class="w-full px-4 py-3 rounded-lg modern-input"
                     placeholder="1"
+                    required
                   />
                 </div>
                 <div>
                   <label class="block mb-2 text-sm font-semibold text-gray-700"
                     >Month Number</label
                   >
-                  <select class="w-full px-4 py-3 rounded-lg modern-select">
+                  <select
+                    name="month"
+                    class="w-full px-4 py-3 rounded-lg modern-select"
+                    required
+                  >
                     <option value="">Select Month</option>
                     <option value="1">
                       Month 1: Foundations with Git/GitHub
@@ -254,8 +260,10 @@
                 >
                 <input
                   type="text"
+                  name="title"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="e.g., Git Fundamentals"
+                  required
                 />
               </div>
 
@@ -264,8 +272,10 @@
                   >Description</label
                 >
                 <textarea
+                  name="description"
                   class="w-full h-24 px-4 py-3 rounded-lg modern-input"
                   placeholder="Session 1 & 2 - Duration: 4 hours"
+                  required
                 ></textarea>
               </div>
 
@@ -276,8 +286,10 @@
                   >
                   <input
                     type="url"
+                    name="video_url"
                     class="w-full px-4 py-3 rounded-lg modern-input"
                     placeholder="https://example.com/recording"
+                    required
                   />
                 </div>
                 <div>
@@ -286,8 +298,10 @@
                   >
                   <input
                     type="text"
+                    name="duration"
                     class="w-full px-4 py-3 rounded-lg modern-input"
                     placeholder="4 hours"
+                    required
                   />
                 </div>
               </div>
@@ -298,8 +312,10 @@
                 >
                 <input
                   type="text"
+                  name="sessions"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="1, 2"
+                  required
                 />
               </div>
 
@@ -309,16 +325,20 @@
                 >
                 <input
                   type="text"
+                  name="topics"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="Git basics, Repository creation, Branching"
+                  required
                 />
               </div>
 
               <div class="flex items-center">
                 <input
                   type="checkbox"
+                  name="active"
                   id="recording-active"
                   class="w-4 h-4 mr-3 text-blue-600"
+                  checked
                 />
                 <label
                   for="recording-active"
@@ -600,15 +620,17 @@
           </div>
 
           <div class="p-8 glass-card rounded-2xl">
-            <form class="space-y-6">
+            <form id="documentation-form" class="space-y-6">
               <div>
                 <label class="block mb-2 text-sm font-semibold text-gray-700"
                   >Resource Title</label
                 >
                 <input
                   type="text"
+                  name="title"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="e.g., MDN JavaScript Guide"
+                  required
                 />
               </div>
 
@@ -617,8 +639,10 @@
                   >Description</label
                 >
                 <textarea
+                  name="description"
                   class="w-full h-24 px-4 py-3 rounded-lg modern-input"
                   placeholder="Comprehensive JavaScript documentation covering basics, syntax, and core concepts"
+                  required
                 ></textarea>
               </div>
 
@@ -628,8 +652,10 @@
                 >
                 <input
                   type="url"
+                  name="url"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+                  required
                 />
               </div>
 
@@ -638,7 +664,11 @@
                   <label class="block mb-2 text-sm font-semibold text-gray-700"
                     >Category</label
                   >
-                  <select class="w-full px-4 py-3 rounded-lg modern-select">
+                  <select
+                    name="category"
+                    class="w-full px-4 py-3 rounded-lg modern-select"
+                    required
+                  >
                     <option value="">Select Category</option>
                     <option value="documentation">
                       Official Documentation
@@ -652,7 +682,11 @@
                   <label class="block mb-2 text-sm font-semibold text-gray-700"
                     >Difficulty Level</label
                   >
-                  <select class="w-full px-4 py-3 rounded-lg modern-select">
+                  <select
+                    name="difficulty"
+                    class="w-full px-4 py-3 rounded-lg modern-select"
+                    required
+                  >
                     <option value="">Select Difficulty</option>
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
@@ -667,20 +701,26 @@
                 >
                 <input
                   type="text"
+                  name="tags"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="javascript, reference, official"
+                  required
                 />
               </div>
 
-              <div>
-                <label class="block mb-2 text-sm font-semibold text-gray-700"
-                  >Icon Class</label
-                >
+              <div class="flex items-center">
                 <input
-                  type="text"
-                  class="w-full px-4 py-3 rounded-lg modern-input"
-                  placeholder="fas fa-book"
+                  type="checkbox"
+                  name="active"
+                  id="documentation-active"
+                  class="w-4 h-4 mr-3 text-blue-600"
+                  checked
                 />
+                <label
+                  for="documentation-active"
+                  class="text-sm font-semibold text-gray-700"
+                  >Active/Published</label
+                >
               </div>
 
               <div class="flex space-x-4">
@@ -976,15 +1016,17 @@
           </div>
 
           <div class="p-8 glass-card rounded-2xl">
-            <form class="space-y-6">
+            <form id="extensions-form" class="space-y-6">
               <div>
                 <label class="block mb-2 text-sm font-semibold text-gray-700"
                   >Extension Name</label
                 >
                 <input
                   type="text"
+                  name="name"
                   class="w-full px-4 py-3 rounded-lg modern-input"
                   placeholder="e.g., Prettier - Code formatter"
+                  required
                 />
               </div>
 

@@ -15,7 +15,9 @@ window.crud = crud;
  */
 async function loadRecordingsData() {
   try {
-    const recordingsTableBody = document.querySelector('#recordings-table-body');
+    const recordingsTableBody = document.querySelector(
+      '#recordings-table-body'
+    );
     if (!recordingsTableBody) return;
 
     // Show loading state
@@ -32,7 +34,7 @@ async function loadRecordingsData() {
 
     // Fetch recordings data
     const recordings = await crud.getAll(crud.collections.RECORDINGS, {
-      orderBy: { field: 'week', direction: 'asc' }
+      orderBy: { field: 'week', direction: 'asc' },
     });
 
     // Clear loading state
@@ -51,13 +53,12 @@ async function loadRecordingsData() {
     }
 
     // Populate table with real data
-    recordings.forEach(recording => {
+    recordings.forEach((recording) => {
       const row = createRecordingTableRow(recording);
       recordingsTableBody.appendChild(row);
     });
 
     updatePaginationInfo('recordings', recordings.length);
-
   } catch (error) {
     console.error('Error loading recordings:', error);
     showErrorState('recordings-table-body', 'Failed to load recordings');
@@ -84,7 +85,7 @@ async function loadDocumentationData() {
     `;
 
     const documentation = await crud.getAll(crud.collections.DOCUMENTATION, {
-      orderBy: { field: 'title', direction: 'asc' }
+      orderBy: { field: 'title', direction: 'asc' },
     });
 
     docsTableBody.innerHTML = '';
@@ -101,13 +102,12 @@ async function loadDocumentationData() {
       return;
     }
 
-    documentation.forEach(doc => {
+    documentation.forEach((doc) => {
       const row = createDocumentationTableRow(doc);
       docsTableBody.appendChild(row);
     });
 
     updatePaginationInfo('documentation', documentation.length);
-
   } catch (error) {
     console.error('Error loading documentation:', error);
     showErrorState('documentation-table-body', 'Failed to load documentation');
@@ -119,7 +119,9 @@ async function loadDocumentationData() {
  */
 async function loadExtensionsData() {
   try {
-    const extensionsTableBody = document.querySelector('#extensions-table-body');
+    const extensionsTableBody = document.querySelector(
+      '#extensions-table-body'
+    );
     if (!extensionsTableBody) return;
 
     extensionsTableBody.innerHTML = `
@@ -134,7 +136,7 @@ async function loadExtensionsData() {
     `;
 
     const extensions = await crud.getAll(crud.collections.VSCODE_EXTENSIONS, {
-      orderBy: { field: 'rating', direction: 'desc' }
+      orderBy: { field: 'rating', direction: 'desc' },
     });
 
     extensionsTableBody.innerHTML = '';
@@ -151,13 +153,12 @@ async function loadExtensionsData() {
       return;
     }
 
-    extensions.forEach(extension => {
+    extensions.forEach((extension) => {
       const row = createExtensionTableRow(extension);
       extensionsTableBody.appendChild(row);
     });
 
     updatePaginationInfo('extensions', extensions.length);
-
   } catch (error) {
     console.error('Error loading extensions:', error);
     showErrorState('extensions-table-body', 'Failed to load extensions');
@@ -184,7 +185,7 @@ async function loadYouTubeChannelsData() {
     `;
 
     const channels = await crud.getAll(crud.collections.YOUTUBE_CHANNELS, {
-      orderBy: { field: 'subscriber_count', direction: 'desc' }
+      orderBy: { field: 'subscriber_count', direction: 'desc' },
     });
 
     channelsTableBody.innerHTML = '';
@@ -201,13 +202,12 @@ async function loadYouTubeChannelsData() {
       return;
     }
 
-    channels.forEach(channel => {
+    channels.forEach((channel) => {
       const row = createYouTubeChannelTableRow(channel);
       channelsTableBody.appendChild(row);
     });
 
     updatePaginationInfo('youtube', channels.length);
-
   } catch (error) {
     console.error('Error loading YouTube channels:', error);
     showErrorState('youtube-table-body', 'Failed to load channels');
@@ -234,7 +234,7 @@ async function loadSoftwareToolsData() {
     `;
 
     const tools = await crud.getAll(crud.collections.SOFTWARE_TOOLS, {
-      orderBy: { field: 'tool_name', direction: 'asc' }
+      orderBy: { field: 'tool_name', direction: 'asc' },
     });
 
     toolsTableBody.innerHTML = '';
@@ -251,13 +251,12 @@ async function loadSoftwareToolsData() {
       return;
     }
 
-    tools.forEach(tool => {
+    tools.forEach((tool) => {
       const row = createSoftwareToolTableRow(tool);
       toolsTableBody.appendChild(row);
     });
 
     updatePaginationInfo('software', tools.length);
-
   } catch (error) {
     console.error('Error loading software tools:', error);
     showErrorState('software-table-body', 'Failed to load tools');
@@ -269,7 +268,9 @@ async function loadSoftwareToolsData() {
  */
 async function loadActivitiesData() {
   try {
-    const activitiesTableBody = document.querySelector('#activities-table-body');
+    const activitiesTableBody = document.querySelector(
+      '#activities-table-body'
+    );
     if (!activitiesTableBody) return;
 
     activitiesTableBody.innerHTML = `
@@ -284,7 +285,7 @@ async function loadActivitiesData() {
     `;
 
     const activities = await crud.getAll(crud.collections.PRACTICE_ACTIVITIES, {
-      orderBy: { field: 'difficulty', direction: 'asc' }
+      orderBy: { field: 'difficulty', direction: 'asc' },
     });
 
     activitiesTableBody.innerHTML = '';
@@ -301,13 +302,12 @@ async function loadActivitiesData() {
       return;
     }
 
-    activities.forEach(activity => {
+    activities.forEach((activity) => {
       const row = createActivityTableRow(activity);
       activitiesTableBody.appendChild(row);
     });
 
     updatePaginationInfo('activities', activities.length);
-
   } catch (error) {
     console.error('Error loading activities:', error);
     showErrorState('activities-table-body', 'Failed to load activities');
@@ -334,7 +334,7 @@ async function loadRepositoriesData() {
     `;
 
     const repositories = await crud.getAll(crud.collections.GITHUB_REPOS, {
-      orderBy: { field: 'stars', direction: 'desc' }
+      orderBy: { field: 'stars', direction: 'desc' },
     });
 
     reposTableBody.innerHTML = '';
@@ -351,13 +351,12 @@ async function loadRepositoriesData() {
       return;
     }
 
-    repositories.forEach(repo => {
+    repositories.forEach((repo) => {
       const row = createRepositoryTableRow(repo);
       reposTableBody.appendChild(row);
     });
 
     updatePaginationInfo('repositories', repositories.length);
-
   } catch (error) {
     console.error('Error loading repositories:', error);
     showErrorState('repositories-table-body', 'Failed to load repositories');
@@ -372,21 +371,32 @@ async function loadRepositoriesData() {
 function createRecordingTableRow(recording) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = recording.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    recording.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = recording.is_active !== false ? 'Active' : 'Inactive';
 
   row.innerHTML = `
     <td class="px-6 py-4">
-      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${recording.week || 'N/A'}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${
+        recording.week || 'N/A'
+      }</span>
     </td>
     <td class="px-6 py-4">
-      <span class="text-gray-900 font-medium">Month ${recording.month || 'N/A'}</span>
+      <span class="text-gray-900 font-medium">Month ${
+        recording.month || 'N/A'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <div>
-        <p class="font-medium text-gray-900">${recording.title || 'Untitled'}</p>
-        <p class="text-sm text-gray-500">${recording.description || 'No description'}</p>
+        <p class="font-medium text-gray-900">${
+          recording.title || 'Untitled'
+        }</p>
+        <p class="text-sm text-gray-500">${
+          recording.description || 'No description'
+        }</p>
       </div>
     </td>
     <td class="px-6 py-4">
@@ -397,19 +407,25 @@ function createRecordingTableRow(recording) {
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editRecording('${recording.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editRecording('${
+          recording.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="viewRecording('${recording.id}')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="viewRecording('${
+          recording.id
+        }')">
           <i class="fas fa-eye"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteRecording('${recording.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteRecording('${
+          recording.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -419,8 +435,11 @@ function createRecordingTableRow(recording) {
 function createDocumentationTableRow(doc) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = doc.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    doc.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = doc.is_active !== false ? 'Active' : 'Inactive';
 
   row.innerHTML = `
@@ -432,33 +451,47 @@ function createDocumentationTableRow(doc) {
     <td class="px-6 py-4">
       <div>
         <p class="font-medium text-gray-900">${doc.title || 'Untitled'}</p>
-        <p class="text-sm text-gray-500">${doc.description || 'No description'}</p>
+        <p class="text-sm text-gray-500">${
+          doc.description || 'No description'
+        }</p>
       </div>
     </td>
     <td class="px-6 py-4">
-      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${doc.category || 'General'}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${
+        doc.category || 'General'
+      }</span>
     </td>
     <td class="px-6 py-4">
-      <a href="${doc.url || '#'}" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm">${doc.url ? new URL(doc.url).hostname : 'No URL'}</a>
+      <a href="${
+        doc.url || '#'
+      }" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm">${
+    doc.url ? new URL(doc.url).hostname : 'No URL'
+  }</a>
     </td>
     <td class="px-6 py-4">
       <span class="${statusClass} px-2 py-1 rounded-full text-sm font-medium">${statusText}</span>
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editDocumentation('${doc.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editDocumentation('${
+          doc.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${doc.url}', '_blank')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${
+          doc.url
+        }', '_blank')">
           <i class="fas fa-external-link-alt"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteDocumentation('${doc.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteDocumentation('${
+          doc.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -468,10 +501,15 @@ function createDocumentationTableRow(doc) {
 function createExtensionTableRow(extension) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = extension.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    extension.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = extension.is_active !== false ? 'Active' : 'Inactive';
-  const stars = '★'.repeat(Math.floor(extension.rating || 0)) + '☆'.repeat(5 - Math.floor(extension.rating || 0));
+  const stars =
+    '★'.repeat(Math.floor(extension.rating || 0)) +
+    '☆'.repeat(5 - Math.floor(extension.rating || 0));
 
   row.innerHTML = `
     <td class="px-6 py-4">
@@ -481,37 +519,53 @@ function createExtensionTableRow(extension) {
     </td>
     <td class="px-6 py-4">
       <div>
-        <p class="font-medium text-gray-900">${extension.extension_name || 'Unnamed Extension'}</p>
-        <p class="text-sm text-gray-500">${extension.description || 'No description'}</p>
+        <p class="font-medium text-gray-900">${
+          extension.extension_name || 'Unnamed Extension'
+        }</p>
+        <p class="text-sm text-gray-500">${
+          extension.description || 'No description'
+        }</p>
       </div>
     </td>
     <td class="px-6 py-4">
-      <span class="text-gray-600 font-medium">${extension.install_count || '0'}</span>
+      <span class="text-gray-600 font-medium">${
+        extension.install_count || '0'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <div class="flex items-center">
         <span class="text-yellow-400">${stars}</span>
-        <span class="ml-2 text-sm text-gray-600">${extension.rating || '0.0'}</span>
+        <span class="ml-2 text-sm text-gray-600">${
+          extension.rating || '0.0'
+        }</span>
       </div>
     </td>
     <td class="px-6 py-4">
-      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${extension.category || 'General'}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${
+        extension.category || 'General'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editExtension('${extension.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editExtension('${
+          extension.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${extension.marketplace_url}', '_blank')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${
+          extension.marketplace_url
+        }', '_blank')">
           <i class="fas fa-external-link-alt"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteExtension('${extension.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteExtension('${
+          extension.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -521,8 +575,11 @@ function createExtensionTableRow(extension) {
 function createYouTubeChannelTableRow(channel) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = channel.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    channel.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = channel.is_active !== false ? 'Active' : 'Inactive';
 
   row.innerHTML = `
@@ -532,16 +589,24 @@ function createYouTubeChannelTableRow(channel) {
           <i class="fab fa-youtube text-red-600 text-xl"></i>
         </div>
         <div>
-          <p class="font-medium text-gray-900">${channel.channel_name || 'Unnamed Channel'}</p>
-          <p class="text-sm text-gray-500">${channel.description || 'No description'}</p>
+          <p class="font-medium text-gray-900">${
+            channel.channel_name || 'Unnamed Channel'
+          }</p>
+          <p class="text-sm text-gray-500">${
+            channel.description || 'No description'
+          }</p>
         </div>
       </div>
     </td>
     <td class="px-6 py-4">
-      <span class="text-gray-600 font-medium">${channel.subscriber_count || '0'}</span>
+      <span class="text-gray-600 font-medium">${
+        channel.subscriber_count || '0'
+      }</span>
     </td>
     <td class="px-6 py-4">
-      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${channel.category || 'General'}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${
+        channel.category || 'General'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <span class="text-gray-600">English</span>
@@ -551,19 +616,25 @@ function createYouTubeChannelTableRow(channel) {
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editChannel('${channel.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editChannel('${
+          channel.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${channel.channel_url}', '_blank')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${
+          channel.channel_url
+        }', '_blank')">
           <i class="fas fa-external-link-alt"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteChannel('${channel.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteChannel('${
+          channel.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -573,10 +644,15 @@ function createYouTubeChannelTableRow(channel) {
 function createSoftwareToolTableRow(tool) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = tool.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    tool.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = tool.is_active !== false ? 'Active' : 'Inactive';
-  const priceClass = tool.is_free ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800';
+  const priceClass = tool.is_free
+    ? 'bg-green-100 text-green-800'
+    : 'bg-orange-100 text-orange-800';
   const priceText = tool.is_free ? 'Free' : 'Paid';
 
   row.innerHTML = `
@@ -586,38 +662,54 @@ function createSoftwareToolTableRow(tool) {
           <i class="fas fa-tools text-blue-600 text-xl"></i>
         </div>
         <div>
-          <p class="font-medium text-gray-900">${tool.tool_name || 'Unnamed Tool'}</p>
-          <p class="text-sm text-gray-500">${tool.description || 'No description'}</p>
+          <p class="font-medium text-gray-900">${
+            tool.tool_name || 'Unnamed Tool'
+          }</p>
+          <p class="text-sm text-gray-500">${
+            tool.description || 'No description'
+          }</p>
         </div>
       </div>
     </td>
     <td class="px-6 py-4">
-      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${tool.category || 'General'}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${
+        tool.category || 'General'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <span class="${priceClass} px-2 py-1 rounded-full text-sm font-medium">${priceText}</span>
     </td>
     <td class="px-6 py-4">
-      <span class="text-gray-600">${Array.isArray(tool.platform) ? tool.platform.join(', ') : (tool.platform || 'Unknown')}</span>
+      <span class="text-gray-600">${
+        Array.isArray(tool.platform)
+          ? tool.platform.join(', ')
+          : tool.platform || 'Unknown'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <span class="${statusClass} px-2 py-1 rounded-full text-sm font-medium">${statusText}</span>
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editTool('${tool.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editTool('${
+          tool.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${tool.official_website || tool.download_url}', '_blank')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${
+          tool.official_website || tool.download_url
+        }', '_blank')">
           <i class="fas fa-external-link-alt"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteTool('${tool.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteTool('${
+          tool.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -627,13 +719,18 @@ function createSoftwareToolTableRow(tool) {
 function createActivityTableRow(activity) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = activity.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    activity.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = activity.is_active !== false ? 'Active' : 'Inactive';
-  
+
   let difficultyClass = 'bg-green-100 text-green-800';
-  if (activity.difficulty === 'intermediate') difficultyClass = 'bg-yellow-100 text-yellow-800';
-  if (activity.difficulty === 'advanced') difficultyClass = 'bg-red-100 text-red-800';
+  if (activity.difficulty === 'intermediate')
+    difficultyClass = 'bg-yellow-100 text-yellow-800';
+  if (activity.difficulty === 'advanced')
+    difficultyClass = 'bg-red-100 text-red-800';
 
   row.innerHTML = `
     <td class="px-6 py-4">
@@ -642,8 +739,12 @@ function createActivityTableRow(activity) {
           <i class="fas fa-tasks text-blue-600 text-xl"></i>
         </div>
         <div>
-          <p class="font-medium text-gray-900">${activity.activity_name || 'Unnamed Activity'}</p>
-          <p class="text-sm text-gray-500">${activity.description || 'No description'}</p>
+          <p class="font-medium text-gray-900">${
+            activity.activity_name || 'Unnamed Activity'
+          }</p>
+          <p class="text-sm text-gray-500">${
+            activity.description || 'No description'
+          }</p>
         </div>
       </div>
     </td>
@@ -651,7 +752,9 @@ function createActivityTableRow(activity) {
       <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">Activity</span>
     </td>
     <td class="px-6 py-4">
-      <span class="${difficultyClass} px-2 py-1 rounded-full text-sm font-medium">${activity.difficulty || 'Beginner'}</span>
+      <span class="${difficultyClass} px-2 py-1 rounded-full text-sm font-medium">${
+    activity.difficulty || 'Beginner'
+  }</span>
     </td>
     <td class="px-6 py-4">
       <span class="text-gray-600">${activity.estimated_time || 'N/A'}</span>
@@ -661,19 +764,25 @@ function createActivityTableRow(activity) {
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editActivity('${activity.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editActivity('${
+          activity.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${activity.url}', '_blank')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${
+          activity.url
+        }', '_blank')">
           <i class="fas fa-eye"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteActivity('${activity.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteActivity('${
+          activity.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -683,8 +792,11 @@ function createActivityTableRow(activity) {
 function createRepositoryTableRow(repo) {
   const row = document.createElement('tr');
   row.className = 'hover:bg-gray-50 transition-colors';
-  
-  const statusClass = repo.is_active !== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+  const statusClass =
+    repo.is_active !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-red-100 text-red-800';
   const statusText = repo.is_active !== false ? 'Active' : 'Inactive';
 
   row.innerHTML = `
@@ -694,8 +806,12 @@ function createRepositoryTableRow(repo) {
           <i class="fab fa-github text-gray-800 text-xl"></i>
         </div>
         <div>
-          <p class="font-medium text-gray-900">${repo.repo_name || 'Unnamed Repository'}</p>
-          <p class="text-sm text-gray-500">${repo.description || 'No description'}</p>
+          <p class="font-medium text-gray-900">${
+            repo.repo_name || 'Unnamed Repository'
+          }</p>
+          <p class="text-sm text-gray-500">${
+            repo.description || 'No description'
+          }</p>
         </div>
       </div>
     </td>
@@ -703,29 +819,39 @@ function createRepositoryTableRow(repo) {
       <span class="text-gray-600 font-medium">${repo.stars || 0} ⭐</span>
     </td>
     <td class="px-6 py-4">
-      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${repo.language || 'JavaScript'}</span>
+      <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium">${
+        repo.language || 'JavaScript'
+      }</span>
     </td>
     <td class="px-6 py-4">
-      <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-medium">${repo.category || 'General'}</span>
+      <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm font-medium">${
+        repo.category || 'General'
+      }</span>
     </td>
     <td class="px-6 py-4">
       <span class="${statusClass} px-2 py-1 rounded-full text-sm font-medium">${statusText}</span>
     </td>
     <td class="px-6 py-4">
       <div class="flex space-x-2">
-        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editRepository('${repo.id}')">
+        <button class="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50" title="Edit" onclick="editRepository('${
+          repo.id
+        }')">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${repo.github_url}', '_blank')">
+        <button class="text-green-600 hover:text-green-800 p-2 rounded-lg hover:bg-green-50" title="View" onclick="window.open('${
+          repo.github_url
+        }', '_blank')">
           <i class="fab fa-github"></i>
         </button>
-        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteRepository('${repo.id}')">
+        <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50" title="Delete" onclick="deleteRepository('${
+          repo.id
+        }')">
           <i class="fas fa-trash"></i>
         </button>
       </div>
     </td>
   `;
-  
+
   return row;
 }
 
@@ -751,16 +877,19 @@ function showErrorState(tableBodyId, message) {
 function updatePaginationInfo(section, totalItems) {
   const paginationInfo = document.querySelector(`#${section}-pagination-info`);
   if (paginationInfo) {
-    paginationInfo.textContent = `Showing 1 to ${Math.min(totalItems, 10)} of ${totalItems} results`;
+    paginationInfo.textContent = `Showing 1 to ${Math.min(
+      totalItems,
+      10
+    )} of ${totalItems} results`;
   }
 }
 
 // ==================== INITIALIZATION ====================
 
 // Initialize the admin dashboard when DOM is loaded
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
   console.log('🚀 Admin Dashboard Initializing...');
-  
+
   try {
     // Load all data sections
     await Promise.all([
@@ -770,14 +899,14 @@ document.addEventListener('DOMContentLoaded', async function() {
       loadYouTubeChannelsData(),
       loadSoftwareToolsData(),
       loadActivitiesData(),
-      loadRepositoriesData()
+      loadRepositoriesData(),
     ]);
-    
+
     console.log('✅ All data loaded successfully!');
   } catch (error) {
     console.error('❌ Error initializing dashboard:', error);
   }
-  
+
   // Initialize sidebar navigation
   initializeSidebarNavigation();
 });
@@ -810,138 +939,145 @@ function initializeSidebarNavigation() {
 // ==================== ACTION HANDLERS ====================
 
 // Placeholder functions for CRUD operations (to be implemented)
-window.editRecording = function(id) {
+window.editRecording = function (id) {
   console.log('Edit recording:', id);
   // TODO: Implement edit functionality
 };
 
-window.viewRecording = function(id) {
+window.viewRecording = function (id) {
   console.log('View recording:', id);
   // TODO: Implement view functionality
 };
 
-window.deleteRecording = function(id) {
+window.deleteRecording = function (id) {
   if (confirm('Are you sure you want to delete this recording?')) {
-    crud.softDelete(crud.collections.RECORDINGS, id)
+    crud
+      .softDelete(crud.collections.RECORDINGS, id)
       .then(() => {
         console.log('Recording deleted successfully');
         loadRecordingsData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting recording:', error);
         alert('Failed to delete recording');
       });
   }
 };
 
-window.editDocumentation = function(id) {
+window.editDocumentation = function (id) {
   console.log('Edit documentation:', id);
   // TODO: Implement edit functionality
 };
 
-window.deleteDocumentation = function(id) {
+window.deleteDocumentation = function (id) {
   if (confirm('Are you sure you want to delete this documentation?')) {
-    crud.softDelete(crud.collections.DOCUMENTATION, id)
+    crud
+      .softDelete(crud.collections.DOCUMENTATION, id)
       .then(() => {
         console.log('Documentation deleted successfully');
         loadDocumentationData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting documentation:', error);
         alert('Failed to delete documentation');
       });
   }
 };
 
-window.editExtension = function(id) {
+window.editExtension = function (id) {
   console.log('Edit extension:', id);
   // TODO: Implement edit functionality
 };
 
-window.deleteExtension = function(id) {
+window.deleteExtension = function (id) {
   if (confirm('Are you sure you want to delete this extension?')) {
-    crud.softDelete(crud.collections.VSCODE_EXTENSIONS, id)
+    crud
+      .softDelete(crud.collections.VSCODE_EXTENSIONS, id)
       .then(() => {
         console.log('Extension deleted successfully');
         loadExtensionsData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting extension:', error);
         alert('Failed to delete extension');
       });
   }
 };
 
-window.editChannel = function(id) {
+window.editChannel = function (id) {
   console.log('Edit channel:', id);
   // TODO: Implement edit functionality
 };
 
-window.deleteChannel = function(id) {
+window.deleteChannel = function (id) {
   if (confirm('Are you sure you want to delete this channel?')) {
-    crud.softDelete(crud.collections.YOUTUBE_CHANNELS, id)
+    crud
+      .softDelete(crud.collections.YOUTUBE_CHANNELS, id)
       .then(() => {
         console.log('Channel deleted successfully');
         loadYouTubeChannelsData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting channel:', error);
         alert('Failed to delete channel');
       });
   }
 };
 
-window.editTool = function(id) {
+window.editTool = function (id) {
   console.log('Edit tool:', id);
   // TODO: Implement edit functionality
 };
 
-window.deleteTool = function(id) {
+window.deleteTool = function (id) {
   if (confirm('Are you sure you want to delete this tool?')) {
-    crud.softDelete(crud.collections.SOFTWARE_TOOLS, id)
+    crud
+      .softDelete(crud.collections.SOFTWARE_TOOLS, id)
       .then(() => {
         console.log('Tool deleted successfully');
         loadSoftwareToolsData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting tool:', error);
         alert('Failed to delete tool');
       });
   }
 };
 
-window.editActivity = function(id) {
+window.editActivity = function (id) {
   console.log('Edit activity:', id);
   // TODO: Implement edit functionality
 };
 
-window.deleteActivity = function(id) {
+window.deleteActivity = function (id) {
   if (confirm('Are you sure you want to delete this activity?')) {
-    crud.softDelete(crud.collections.PRACTICE_ACTIVITIES, id)
+    crud
+      .softDelete(crud.collections.PRACTICE_ACTIVITIES, id)
       .then(() => {
         console.log('Activity deleted successfully');
         loadActivitiesData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting activity:', error);
         alert('Failed to delete activity');
       });
   }
 };
 
-window.editRepository = function(id) {
+window.editRepository = function (id) {
   console.log('Edit repository:', id);
   // TODO: Implement edit functionality
 };
 
-window.deleteRepository = function(id) {
+window.deleteRepository = function (id) {
   if (confirm('Are you sure you want to delete this repository?')) {
-    crud.softDelete(crud.collections.GITHUB_REPOS, id)
+    crud
+      .softDelete(crud.collections.GITHUB_REPOS, id)
       .then(() => {
         console.log('Repository deleted successfully');
         loadRepositoriesData(); // Reload data
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error deleting repository:', error);
         alert('Failed to delete repository');
       });
@@ -951,7 +1087,7 @@ window.deleteRepository = function(id) {
 // ==================== FORM HANDLING ====================
 
 // Form validation and enhancement
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const forms = document.querySelectorAll('form');
   forms.forEach((form) => {
     form.addEventListener('submit', (e) => {
@@ -1001,33 +1137,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Search functionality for each table
 function setupSearchFunctionality() {
-  const searchInputs = document.querySelectorAll('input[placeholder*="Search"]');
-  
-  searchInputs.forEach(input => {
-    input.addEventListener('input', debounce(async function() {
-      const searchTerm = this.value.toLowerCase();
-      const tableBody = this.closest('.glass-card').querySelector('tbody');
-      
-      if (!searchTerm) {
-        // Reload original data if search is cleared
-        const sectionName = this.getAttribute('data-section');
-        if (sectionName) {
-          await reloadSectionData(sectionName);
-        }
-        return;
-      }
+  const searchInputs = document.querySelectorAll(
+    'input[placeholder*="Search"]'
+  );
 
-      // Filter table rows based on search term
-      const rows = tableBody.querySelectorAll('tr');
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
+  searchInputs.forEach((input) => {
+    input.addEventListener(
+      'input',
+      debounce(async function () {
+        const searchTerm = this.value.toLowerCase();
+        const tableBody = this.closest('.glass-card').querySelector('tbody');
+
+        if (!searchTerm) {
+          // Reload original data if search is cleared
+          const sectionName = this.getAttribute('data-section');
+          if (sectionName) {
+            await reloadSectionData(sectionName);
+          }
+          return;
         }
-      });
-    }, 300));
+
+        // Filter table rows based on search term
+        const rows = tableBody.querySelectorAll('tr');
+        rows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }, 300)
+    );
   });
 }
 
@@ -1045,7 +1186,7 @@ function debounce(func, wait) {
 }
 
 async function reloadSectionData(sectionName) {
-  switch(sectionName) {
+  switch (sectionName) {
     case 'recordings':
       await loadRecordingsData();
       break;
@@ -1075,7 +1216,7 @@ async function reloadSectionData(sectionName) {
 // Main initialization function
 async function initializeAdminDashboard() {
   console.log('Initializing Admin Dashboard...');
-  
+
   try {
     // Load all data
     await loadRecordingsData();
@@ -1085,10 +1226,10 @@ async function initializeAdminDashboard() {
     await loadSoftwareToolsData();
     await loadActivitiesData();
     await loadRepositoriesData();
-    
+
     // Setup search functionality
     setupSearchFunctionality();
-    
+
     console.log('Admin Dashboard initialized successfully!');
   } catch (error) {
     console.error('Error initializing admin dashboard:', error);

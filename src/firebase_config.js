@@ -21,5 +21,4 @@ const db = getFirestore(app); // Initialize Firestore
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-export { auth, provider };
-export { app, db, auth }; // export both for use in your project
+export { app, db, auth, provider }; // export both for use in your project

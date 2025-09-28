@@ -914,9 +914,28 @@ function initializeSidebarNavigation() {
 // ==================== ACTION HANDLERS ====================
 
 // Placeholder functions for CRUD operations (to be implemented)
-window.editRecording = function (id) {
+window.editRecording = async function (id) {
   console.log('Edit recording:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the recording data
+    const recording = await crud.getById(crud.collections.RECORDINGS, id);
+    if (!recording) {
+      alert('Recording not found!');
+      return;
+    }
+
+    // Switch to recordings section
+    switchToSection('recordings');
+
+    // Populate the form
+    populateRecordingForm(recording);
+
+    // Set edit mode
+    setEditMode('recordings-form', id);
+  } catch (error) {
+    console.error('Error loading recording for edit:', error);
+    alert('Failed to load recording data');
+  }
 };
 
 window.viewRecording = function (id) {
@@ -939,9 +958,28 @@ window.deleteRecording = function (id) {
   }
 };
 
-window.editDocumentation = function (id) {
+window.editDocumentation = async function (id) {
   console.log('Edit documentation:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the documentation data
+    const doc = await crud.getById(crud.collections.DOCUMENTATION, id);
+    if (!doc) {
+      alert('Documentation not found!');
+      return;
+    }
+
+    // Switch to documentation section
+    switchToSection('documentation');
+
+    // Populate the form
+    populateDocumentationForm(doc);
+
+    // Set edit mode
+    setEditMode('documentation-form', id);
+  } catch (error) {
+    console.error('Error loading documentation for edit:', error);
+    alert('Failed to load documentation data');
+  }
 };
 
 window.deleteDocumentation = function (id) {
@@ -959,9 +997,28 @@ window.deleteDocumentation = function (id) {
   }
 };
 
-window.editExtension = function (id) {
+window.editExtension = async function (id) {
   console.log('Edit extension:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the extension data
+    const ext = await crud.getById(crud.collections.VSCODE_EXTENSIONS, id);
+    if (!ext) {
+      alert('Extension not found!');
+      return;
+    }
+
+    // Switch to extensions section
+    switchToSection('extensions');
+
+    // Populate the form
+    populateExtensionForm(ext);
+
+    // Set edit mode
+    setEditMode('extensions-form', id);
+  } catch (error) {
+    console.error('Error loading extension for edit:', error);
+    alert('Failed to load extension data');
+  }
 };
 
 window.deleteExtension = function (id) {
@@ -979,9 +1036,28 @@ window.deleteExtension = function (id) {
   }
 };
 
-window.editChannel = function (id) {
+window.editChannel = async function (id) {
   console.log('Edit channel:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the channel data
+    const channel = await crud.getById(crud.collections.YOUTUBE_CHANNELS, id);
+    if (!channel) {
+      alert('Channel not found!');
+      return;
+    }
+
+    // Switch to youtube section
+    switchToSection('youtube');
+
+    // Populate the form
+    populateYouTubeForm(channel);
+
+    // Set edit mode
+    setEditMode('youtube-form', id);
+  } catch (error) {
+    console.error('Error loading channel for edit:', error);
+    alert('Failed to load channel data');
+  }
 };
 
 window.deleteChannel = function (id) {
@@ -999,9 +1075,28 @@ window.deleteChannel = function (id) {
   }
 };
 
-window.editTool = function (id) {
+window.editTool = async function (id) {
   console.log('Edit tool:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the tool data
+    const tool = await crud.getById(crud.collections.SOFTWARE_TOOLS, id);
+    if (!tool) {
+      alert('Tool not found!');
+      return;
+    }
+
+    // Switch to software section
+    switchToSection('software');
+
+    // Populate the form
+    populateSoftwareForm(tool);
+
+    // Set edit mode
+    setEditMode('software-form', id);
+  } catch (error) {
+    console.error('Error loading tool for edit:', error);
+    alert('Failed to load tool data');
+  }
 };
 
 window.deleteTool = function (id) {
@@ -1019,9 +1114,31 @@ window.deleteTool = function (id) {
   }
 };
 
-window.editActivity = function (id) {
+window.editActivity = async function (id) {
   console.log('Edit activity:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the activity data
+    const activity = await crud.getById(
+      crud.collections.PRACTICE_ACTIVITIES,
+      id
+    );
+    if (!activity) {
+      alert('Activity not found!');
+      return;
+    }
+
+    // Switch to activities section
+    switchToSection('activities');
+
+    // Populate the form
+    populateActivityForm(activity);
+
+    // Set edit mode
+    setEditMode('activities-form', id);
+  } catch (error) {
+    console.error('Error loading activity for edit:', error);
+    alert('Failed to load activity data');
+  }
 };
 
 window.deleteActivity = function (id) {
@@ -1039,9 +1156,28 @@ window.deleteActivity = function (id) {
   }
 };
 
-window.editRepository = function (id) {
+window.editRepository = async function (id) {
   console.log('Edit repository:', id);
-  // TODO: Implement edit functionality
+  try {
+    // Fetch the repository data
+    const repo = await crud.getById(crud.collections.GITHUB_REPOS, id);
+    if (!repo) {
+      alert('Repository not found!');
+      return;
+    }
+
+    // Switch to repositories section
+    switchToSection('repositories');
+
+    // Populate the form
+    populateRepositoryForm(repo);
+
+    // Set edit mode
+    setEditMode('repositories-form', id);
+  } catch (error) {
+    console.error('Error loading repository for edit:', error);
+    alert('Failed to load repository data');
+  }
 };
 
 window.deleteRepository = function (id) {
@@ -1058,6 +1194,272 @@ window.deleteRepository = function (id) {
       });
   }
 };
+
+// ==================== EDIT MODE MANAGEMENT ====================
+
+// Store current edit mode state
+let editMode = {
+  isEditing: false,
+  formId: null,
+  recordId: null,
+};
+
+/**
+ * Switch to a specific section in the admin dashboard
+ */
+function switchToSection(sectionId) {
+  const navItems = document.querySelectorAll('.nav-item');
+  const formSections = document.querySelectorAll('.form-section');
+
+  // Update active navigation
+  navItems.forEach((nav) => {
+    nav.classList.remove('active');
+    if (nav.dataset.section === sectionId) {
+      nav.classList.add('active');
+    }
+  });
+
+  // Show corresponding section
+  formSections.forEach((section) => {
+    if (section.id === sectionId) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  });
+}
+
+/**
+ * Set edit mode for a form
+ */
+function setEditMode(formId, recordId) {
+  editMode = {
+    isEditing: true,
+    formId: formId,
+    recordId: recordId,
+  };
+
+  // Update form button text and add cancel button
+  const form = document.getElementById(formId);
+  if (form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) {
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = originalText.replace('Save', 'Update');
+      submitButton.dataset.originalText = originalText;
+
+      // Add cancel button if it doesn't exist
+      const buttonContainer = submitButton.parentElement;
+      if (!form.querySelector('.cancel-edit-btn')) {
+        const cancelButton = document.createElement('button');
+        cancelButton.type = 'button';
+        cancelButton.className =
+          'px-8 py-3 font-semibold text-gray-700 transition-colors bg-gray-200 rounded-lg cancel-edit-btn hover:bg-gray-300';
+        cancelButton.innerHTML = '<i class="mr-2 fas fa-times"></i>Cancel Edit';
+        cancelButton.onclick = () => window.cancelEdit();
+        buttonContainer.appendChild(cancelButton);
+      }
+    }
+  }
+
+  console.log(`📝 Edit mode activated for ${formId} with record ${recordId}`);
+}
+
+/**
+ * Clear edit mode
+ */
+function clearEditMode() {
+  if (editMode.formId) {
+    const form = document.getElementById(editMode.formId);
+    if (form) {
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton && submitButton.dataset.originalText) {
+        submitButton.innerHTML = submitButton.dataset.originalText;
+      }
+      form.reset();
+
+      // Remove cancel button if it exists
+      const cancelButton = form.querySelector('.cancel-edit-btn');
+      if (cancelButton) {
+        cancelButton.remove();
+      }
+    }
+  }
+
+  editMode = {
+    isEditing: false,
+    formId: null,
+    recordId: null,
+  };
+
+  console.log('🔄 Edit mode cleared');
+}
+
+/**
+ * Cancel edit mode (user-triggered)
+ */
+window.cancelEdit = function () {
+  if (
+    confirm(
+      'Are you sure you want to cancel editing? Any unsaved changes will be lost.'
+    )
+  ) {
+    clearEditMode();
+  }
+};
+
+// ==================== FORM POPULATION FUNCTIONS ====================
+
+/**
+ * Populate recordings form with data
+ */
+function populateRecordingForm(data) {
+  const form = document.getElementById('recordings-form');
+  if (!form) return;
+
+  form.querySelector('[name="week"]').value = data.week || '';
+  form.querySelector('[name="month"]').value = data.month || '';
+  form.querySelector('[name="title"]').value = data.title || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="video_url"]').value = data.video_url || '';
+  form.querySelector('[name="duration"]').value = data.duration || '';
+  form.querySelector('[name="sessions"]').value = Array.isArray(data.sessions)
+    ? data.sessions.join(', ')
+    : data.sessions || '';
+  form.querySelector('[name="topics"]').value = Array.isArray(data.topics)
+    ? data.topics.join(', ')
+    : data.topics || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
+
+/**
+ * Populate documentation form with data
+ */
+function populateDocumentationForm(data) {
+  const form = document.getElementById('documentation-form');
+  if (!form) return;
+
+  form.querySelector('[name="title"]').value = data.title || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="url"]').value = data.url || '';
+  form.querySelector('[name="category"]').value = data.category || '';
+  form.querySelector('[name="difficulty"]').value =
+    data.difficulty || data.difficulty_level || '';
+  form.querySelector('[name="tags"]').value = Array.isArray(data.tags)
+    ? data.tags.join(', ')
+    : data.tags || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
+
+/**
+ * Populate extension form with data
+ */
+function populateExtensionForm(data) {
+  const form = document.getElementById('extensions-form');
+  if (!form) return;
+
+  form.querySelector('[name="name"]').value =
+    data.name || data.extension_name || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="extension_id"]').value = data.extension_id || '';
+  form.querySelector('[name="category"]').value = data.category || '';
+  form.querySelector('[name="publisher"]').value = data.publisher || '';
+  form.querySelector('[name="install_command"]').value =
+    data.install_command || '';
+  form.querySelector('[name="tags"]').value = Array.isArray(data.tags)
+    ? data.tags.join(', ')
+    : data.tags || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
+
+/**
+ * Populate YouTube form with data
+ */
+function populateYouTubeForm(data) {
+  const form = document.getElementById('youtube-form');
+  if (!form) return;
+
+  form.querySelector('[name="channel_name"]').value = data.channel_name || '';
+  form.querySelector('[name="channel_url"]').value = data.channel_url || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="category"]').value = data.category || '';
+  form.querySelector('[name="subscriber_count"]').value =
+    data.subscriber_count || '';
+  form.querySelector('[name="language"]').value = data.language || '';
+  form.querySelector('[name="tags"]').value = Array.isArray(data.tags)
+    ? data.tags.join(', ')
+    : data.tags || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
+
+/**
+ * Populate software form with data
+ */
+function populateSoftwareForm(data) {
+  const form = document.getElementById('software-form');
+  if (!form) return;
+
+  form.querySelector('[name="name"]').value = data.name || data.tool_name || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="download_url"]').value = data.download_url || '';
+  form.querySelector('[name="category"]').value = data.category || '';
+  form.querySelector('[name="platform"]').value = data.platform || '';
+  form.querySelector('[name="version"]').value = data.version || '';
+  form.querySelector('[name="license"]').value = data.license || '';
+  form.querySelector('[name="is_free"]').checked = data.is_free !== false;
+  form.querySelector('[name="tags"]').value = Array.isArray(data.tags)
+    ? data.tags.join(', ')
+    : data.tags || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
+
+/**
+ * Populate activity form with data
+ */
+function populateActivityForm(data) {
+  const form = document.getElementById('activities-form');
+  if (!form) return;
+
+  form.querySelector('[name="title"]').value =
+    data.title || data.activity_name || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="instructions"]').value = data.instructions || '';
+  form.querySelector('[name="difficulty"]').value = data.difficulty || '';
+  form.querySelector('[name="estimated_time"]').value =
+    data.estimated_time || '';
+  form.querySelector('[name="category"]').value = data.category || '';
+  form.querySelector('[name="tags"]').value = Array.isArray(data.tags)
+    ? data.tags.join(', ')
+    : data.tags || '';
+  form.querySelector('[name="prerequisites"]').value = Array.isArray(
+    data.prerequisites
+  )
+    ? data.prerequisites.join(', ')
+    : data.prerequisites || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
+
+/**
+ * Populate repository form with data
+ */
+function populateRepositoryForm(data) {
+  const form = document.getElementById('repositories-form');
+  if (!form) return;
+
+  form.querySelector('[name="name"]').value = data.name || data.repo_name || '';
+  form.querySelector('[name="description"]').value = data.description || '';
+  form.querySelector('[name="repository_url"]').value =
+    data.repository_url || data.github_url || '';
+  form.querySelector('[name="language"]').value = data.language || '';
+  form.querySelector('[name="stars"]').value = data.stars || '';
+  form.querySelector('[name="level"]').value = data.level || '';
+  form.querySelector('[name="category"]').value = data.category || '';
+  form.querySelector('[name="tags"]').value =
+    Array.isArray(data.tags) || Array.isArray(data.topics)
+      ? (data.tags || data.topics).join(', ')
+      : data.tags || data.topics || '';
+  form.querySelector('[name="active"]').checked = data.active !== false;
+}
 
 // ==================== FORM HANDLING ====================
 
@@ -1088,15 +1490,27 @@ async function handleRecordingsForm(formData) {
 
   console.log('📝 Recording data to save:', data);
 
-  const docId = await crud.create(crud.collections.RECORDINGS, data);
-  console.log('✅ Recording saved with ID:', docId);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    // Update existing record
+    result = await crud.update(
+      crud.collections.RECORDINGS,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ Recording updated with ID:', editMode.recordId);
+  } else {
+    // Create new record
+    result = await crud.create(crud.collections.RECORDINGS, data);
+    console.log('✅ Recording saved with ID:', result);
+  }
 
   await loadRecordingsData(); // Refresh the table
+  clearEditMode(); // Clear edit mode
   console.log('🔄 Recordings table refreshed');
 
-  return docId;
+  return result;
 }
-
 /**
  * Handle documentation form submission
  */
@@ -1115,9 +1529,22 @@ async function handleDocumentationForm(formData) {
     status: 'published',
   };
 
-  const docId = await crud.create(crud.collections.DOCUMENTATION, data);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    result = await crud.update(
+      crud.collections.DOCUMENTATION,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ Documentation updated with ID:', editMode.recordId);
+  } else {
+    result = await crud.create(crud.collections.DOCUMENTATION, data);
+    console.log('✅ Documentation saved with ID:', result);
+  }
+
   await loadDocumentationData();
-  return docId;
+  clearEditMode();
+  return result;
 }
 
 /**
@@ -1139,9 +1566,22 @@ async function handleExtensionsForm(formData) {
     status: 'published',
   };
 
-  const docId = await crud.create(crud.collections.VSCODE_EXTENSIONS, data);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    result = await crud.update(
+      crud.collections.VSCODE_EXTENSIONS,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ Extension updated with ID:', editMode.recordId);
+  } else {
+    result = await crud.create(crud.collections.VSCODE_EXTENSIONS, data);
+    console.log('✅ Extension saved with ID:', result);
+  }
+
   await loadExtensionsData();
-  return docId;
+  clearEditMode();
+  return result;
 }
 
 /**
@@ -1163,9 +1603,22 @@ async function handleYouTubeForm(formData) {
     status: 'published',
   };
 
-  const docId = await crud.create(crud.collections.YOUTUBE_CHANNELS, data);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    result = await crud.update(
+      crud.collections.YOUTUBE_CHANNELS,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ YouTube channel updated with ID:', editMode.recordId);
+  } else {
+    result = await crud.create(crud.collections.YOUTUBE_CHANNELS, data);
+    console.log('✅ YouTube channel saved with ID:', result);
+  }
+
   await loadYouTubeChannelsData();
-  return docId;
+  clearEditMode();
+  return result;
 }
 
 /**
@@ -1189,9 +1642,22 @@ async function handleSoftwareForm(formData) {
     status: 'published',
   };
 
-  const docId = await crud.create(crud.collections.SOFTWARE_TOOLS, data);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    result = await crud.update(
+      crud.collections.SOFTWARE_TOOLS,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ Software tool updated with ID:', editMode.recordId);
+  } else {
+    result = await crud.create(crud.collections.SOFTWARE_TOOLS, data);
+    console.log('✅ Software tool saved with ID:', result);
+  }
+
   await loadSoftwareToolsData();
-  return docId;
+  clearEditMode();
+  return result;
 }
 
 /**
@@ -1217,9 +1683,22 @@ async function handleActivitiesForm(formData) {
     status: 'published',
   };
 
-  const docId = await crud.create(crud.collections.PRACTICE_ACTIVITIES, data);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    result = await crud.update(
+      crud.collections.PRACTICE_ACTIVITIES,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ Activity updated with ID:', editMode.recordId);
+  } else {
+    result = await crud.create(crud.collections.PRACTICE_ACTIVITIES, data);
+    console.log('✅ Activity saved with ID:', result);
+  }
+
   await loadActivitiesData();
-  return docId;
+  clearEditMode();
+  return result;
 }
 
 /**
@@ -1242,9 +1721,22 @@ async function handleRepositoriesForm(formData) {
     status: 'published',
   };
 
-  const docId = await crud.create(crud.collections.GITHUB_REPOS, data);
+  let result;
+  if (editMode.isEditing && editMode.recordId) {
+    result = await crud.update(
+      crud.collections.GITHUB_REPOS,
+      editMode.recordId,
+      data
+    );
+    console.log('✅ Repository updated with ID:', editMode.recordId);
+  } else {
+    result = await crud.create(crud.collections.GITHUB_REPOS, data);
+    console.log('✅ Repository saved with ID:', result);
+  }
+
   await loadRepositoriesData();
-  return docId;
+  clearEditMode();
+  return result;
 }
 
 /**
